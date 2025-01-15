@@ -6,13 +6,15 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:10:38 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/14 11:31:22 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:33:43 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include <libft.h>
+
+size_t	ft_strlen(const char *str)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
 	while (*str)

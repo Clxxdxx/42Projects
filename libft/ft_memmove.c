@@ -6,11 +6,11 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:25:24 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/14 15:03:49 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:34:12 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <libft.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:31:01 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/14 13:00:47 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:34:29 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <libft.h>
 
 void	ft_bzero(void *s, size_t n)
 {

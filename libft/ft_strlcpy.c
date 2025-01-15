@@ -6,11 +6,11 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:07:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/14 15:48:58 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:33:59 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <libft.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
