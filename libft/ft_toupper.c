@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 15:07:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 11:00:07 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/15 11:42:12 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/15 11:52:10 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_toupper(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (size > 0)
+	if (c >= 97 && c <= 122)
 	{
-		while (i < size - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		c = c - 32;
 	}
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	return (c);
 }
+
+/*int main()
+{
+	char letra = 'a';
+	printf("%c -> %c\n", letra, ft_toupper(letra));
+	return 0;
+}*/

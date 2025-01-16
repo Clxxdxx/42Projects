@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 15:07:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 11:00:07 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/15 15:16:36 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/15 15:27:49 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+	size_t			i;
 
 	i = 0;
-	if (size > 0)
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		while (i < size - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	while (src[i] != '\0')
+		if (ptr1[i] != ptr2[i])
+			return (ptr1[i] - ptr2[i]);
 		i++;
-	return (i);
+	}
+	return (0);
 }
+
+/*int	main(void)
+{
+	char str1[] = "Hola musdo";
+	char str2[] = "Hola mundo";
+
+	printf("%d",ft_memcmp(str1, str2, 18));
+
+	return (0);
+}*/

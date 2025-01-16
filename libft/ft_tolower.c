@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 15:07:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 11:00:07 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/15 11:56:26 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/15 11:59:24 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_tolower(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (size > 0)
+	if (c >= 65 && c <= 90)
 	{
-		while (i < size - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		c = c + 32;
 	}
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	return (c);
 }
+
+/*int main()
+{
+	char letra = 'S';
+	printf("%c -> %c\n", letra, ft_tolower(letra));
+	return 0;
+}*/

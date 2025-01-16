@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 15:07:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 11:00:07 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/15 12:11:30 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/15 15:02:36 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (size > 0)
+	while (*s)
 	{
-		while (i < size - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		if ((char)c == *s)
+			return ((char *)s);
+		s++;
 	}
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	if (c == '\0')
+		return ((char *)s);
+	return (0);
 }
+
+/*int main()
+{
+	char palabra[] = "palabra";
+	char caracter = 'b';
+
+	char *resultado = ft_strchr(palabra, caracter);
+
+	if (resultado)
+		printf("El caracter '%c' se ha encontrado", caracter);
+	else
+		printf("El caracter '%c' no se encuentra\n", caracter);
+
+	return (0);
+}*/
