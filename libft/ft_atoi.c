@@ -1,39 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:07:56 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/16 16:30:33 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/16 10:35:49 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/16 16:41:31 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	size_t	i;
+	int	i;
+	int	result;
+	int	signo;
 
+	result = 0;
+	signo = 1;
 	i = 0;
-	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
+	while ((nptr[i] > 8 && nptr[i] < 14) || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-')
 	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-		{
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		}
+		signo = -1;
 		i++;
 	}
-	return (0);
+	else if (nptr[i] == '+')
+	{
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = result * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (result * signo);
 }
 
 /*int	main(void)
 {
-	char str1[] = "Hola musdo";
-	char str2[] = "Hola mundo";
+	char	num[] = "-123dd2";
+	int		result;
 
-    printf("%d",ft_strncmp("abcdef", "abc\375xx", 5));
-
-	return 0;
+	result = ft_atoi(num);
+	printf("Resultado %d", result);
 }*/

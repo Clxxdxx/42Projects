@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 14:25:24 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/16 17:13:04 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/16 13:53:40 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/16 14:25:51 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char	*u_dest;
-	unsigned char	*u_src;
+	char	*str;
 
-	if (dest == NULL || src == NULL)
-		return (NULL);
-	u_dest = dest;
-	u_src = (unsigned char *)src;
-	if (u_dest < u_src)
-	{
-		while (n--)
-			*u_dest++ = *u_src++;
-	}
-	else
-	{
-		u_dest += n;
-		u_src += n;
-		while (n--)
-			*(--u_dest) = *(--u_src);
-	}
-	return (dest);
+	str = malloc(nmemb * size);
+	if (str == NULL)
+		return (str);
+	ft_memset(str, 0, nmemb * size);
+	return (str);
 }
+
+/*int main()
+{
+	int *arr;
+
+	arr = (int *)ft_calloc(5, sizeof(int));
+	if (arr == NULL)
+	{
+		printf("Error al asignar memoria\n");
+		return (1);
+	}
+
+	for (int i = 0; i < 5; i++)
+		printf("arr[%d] = %d\n", i, arr[i]);
+
+	free(arr);
+	return (0);
+}*/

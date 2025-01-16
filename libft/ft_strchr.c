@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:11:30 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 15:02:36 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:17:27 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
-		if ((char)c == *s)
+		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 	}
-	if (c == '\0')
+	if ((char)c == '\0')
 		return ((char *)s);
 	return (0);
 }
