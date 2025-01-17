@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:25:24 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/16 17:13:04 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:16:57 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*u_dest;
 	unsigned char	*u_src;
 
-	if (dest == NULL || src == NULL)
+	if (!dest && !src)
 		return (NULL);
 	u_dest = dest;
 	u_src = (unsigned char *)src;
@@ -35,3 +35,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+/*int main(void)
+{
+    char str[] = "abcdef";
+
+    ft_memmove(str + 2, str, 4);
+    printf("Resultado: %s\n", str);
+
+    return 0;
+}*/

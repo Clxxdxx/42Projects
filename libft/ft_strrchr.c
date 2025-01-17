@@ -6,25 +6,25 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:44:05 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 13:02:21 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:10:58 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*last;
+	unsigned char	*last;
 
 	last = 0;
 	while (*s)
 	{
-		if ((char)c == *s)
-			last = (char *)s;
+		if ((unsigned char)c == *s)
+			last = (unsigned char *)s;
 		s++;
 	}
-	if (c == '\0')
-		return ((char *)s);
+	if ((unsigned char)c == '\0')
+		return ((unsigned char *)s);
 	return (last);
 }
 
@@ -33,7 +33,7 @@ char	*strrchr(const char *s, int c)
 	char palabra[] = "palabra";
 	char caracter = 'b';
 
-	char *resultado = strrchr(palabra, caracter);
+	char *resultado = ft_strrchr(palabra, caracter);
 
 	if (resultado)
 		printf("El caracter '%c' se ha encontrado", caracter);

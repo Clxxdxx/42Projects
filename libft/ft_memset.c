@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:43:21 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/16 14:21:34 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:26:30 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,12 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
+
+/*int main(void)
+{
+    char str[] = "Hola, mundo";
+
+    ft_memset(str, 'x', 5);
+    printf("Resultado: %s\n", str);
+    return 0;
+}*/
