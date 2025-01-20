@@ -6,13 +6,13 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:24:00 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/17 14:10:15 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:10:40 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substring;
 	size_t	i;
@@ -20,23 +20,25 @@
 
 	str_len = 0;
 	i = 0;
-	substring = (char *)malloc(sizeof(char) * (len + 1));
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	while (s[str_len])
 		str_len++;
 	if (start >= str_len)
-		return (malloc(1));
-	if (substring == NULL)
+		len = 0;
+	else if (len > str_len - start)
+		len = str_len - start;
+	substring = (char *)malloc(len + 1);
+	if (!substring)
 		return (NULL);
-	while (i < len && s[start + i] != '\0')
+	while (i < len && s[start + i])
 	{
 		substring[i] = s[start + i];
 		i++;
 	}
 	substring[i] = '\0';
 	return (substring);
-}*/
+}
 
 /*int main()
 {
@@ -45,7 +47,6 @@
 
 	printf("Substring: %s\n", substr);
 
-	free(substr);
 
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:44:05 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/17 14:10:58 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:12:45 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char	*last;
+	char	*last;
 
-	last = 0;
+	last = NULL;
+	c &= 255;
 	while (*s)
 	{
-		if ((unsigned char)c == *s)
-			last = (unsigned char *)s;
+		if (*s == (char)c)
+			last = (char *)s;
 		s++;
 	}
-	if ((unsigned char)c == '\0')
-		return ((unsigned char *)s);
+	if (c == '\0')
+		return ((char *)s);
 	return (last);
 }
 
