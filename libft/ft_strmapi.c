@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 11:43:21 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/22 10:20:40 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/22 14:05:33 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/22 14:55:09 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned char	*str;
-	size_t			i;
+	int		i;
+	char	*result;
 
-	str = s;
+	result = (char *)malloc((ft_strlen(s) + 1));
 	i = 0;
-	while (i < n)
+	if (!result)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		str[i] = (unsigned char)c;
+		result[i] = f(i, s[i]);
 		i++;
 	}
-	return (str);
+	result[i] = '\0';
+	return (result);
 }
-
-/*int main(void)
-{
-    char str[] = "Hola, mundo";
-
-    ft_memset(str, 'x', 5);
-    printf("Resultado: %s\n", str);
-    return 0;
-}*/

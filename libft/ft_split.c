@@ -6,25 +6,12 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:18:30 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/21 17:06:47 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:42 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-static void	free_array(char **array)
-{
-	size_t	i;
-
-	i = 0;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
 
 static size_t	count_words(char const *s, char c)
 {
@@ -86,10 +73,7 @@ static char	**fill_result(char const *s, char c, size_t num_words)
 	{
 		result[j] = get_word(s, c, &i);
 		if (!result[j])
-		{
-			free_array(result);
 			return (NULL);
-		}
 		j++;
 	}
 	result[j] = NULL;
@@ -117,20 +101,26 @@ char	**ft_split(char const *s, char c)
 	return (fill_result(s, c, count_words(s, c)));
 }
 
-/*int	main(void)
+/*int main(void)
 {
-	// char *s = "  ";
-	// char del = ' ';
-	// int result;
+    char *str = "Hello,,world,42,,libft";
+    char del = ',';
+    char **result;
+    size_t i;
 
-	// result = count_words(s, del);
+    result = ft_split(str, del);
 
-	// printf("Número de palabras: %d\n", result);
+    if (!result)
+    {
+        printf("Error");
+        return (1);
+    }
 
-	char *s = "  Hola  Cla udio  ";
-	char del = ' ';
-	int result;
-
-	split_words(s, del);
-	return (0);
+    i = 0;
+    while (result[i])
+    {
+        printf("%zu %s\n", i + 1, result[i]);
+        i++;
+    }
+    return (0);
 }*/
