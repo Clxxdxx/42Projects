@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 13:04:42 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/23 10:41:01 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/23 14:23:08 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/24 11:56:54 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	unsigned char	*u_dest;
-	unsigned char	*u_src;
+	t_list	*list;
 
-	if (!dest && !src)
+	list = (t_list *)malloc(sizeof(t_list));
+	if (!list)
 		return (NULL);
-	u_dest = (unsigned char *)dest;
-	u_src = (unsigned char *)src;
-	while (n--)
-		*u_dest++ = *u_src++;
-	return (dest);
+	list->content = (void *)content;
+	list->next = NULL;
+	return (list);
 }
 
-/*int main(void)
-{
-	char src[] = "Hello, world!";
-	char dest[2];
-
-	ft_memcpy(dest, src, strlen(src) + 1);
-	printf("Source: %s\n", src);
-	printf("Destination: %s\n", dest);
-
-	return (0);
+/*int main() {
+    int value = 42;
+    
+    t_list *node = ft_lstnew(&value);
+    
+    printf("Contenido del nodo: %d\n", *(int *)node->content);
+    
 }*/

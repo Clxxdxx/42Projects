@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 13:04:42 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/23 10:41:01 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/23 11:14:47 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/24 10:25:35 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned char	*u_dest;
-	unsigned char	*u_src;
+	int	i;
 
-	if (!dest && !src)
-		return (NULL);
-	u_dest = (unsigned char *)dest;
-	u_src = (unsigned char *)src;
-	while (n--)
-		*u_dest++ = *u_src++;
-	return (dest);
+	i = 0;
+	if (fd > 0)
+	{
+		while (s[i] != '\0')
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+		write(fd, "\n", 1);
+	}
 }
 
-/*int main(void)
+/*#include <fcntl.h>
+int	main(void)
 {
-	char src[] = "Hello, world!";
-	char dest[2];
+	int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
-	ft_memcpy(dest, src, strlen(src) + 1);
-	printf("Source: %s\n", src);
-	printf("Destination: %s\n", dest);
+	ft_putendl_fd("Patata", fd);
+	close(fd);
 
 	return (0);
 }*/

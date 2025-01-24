@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 13:04:42 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/23 10:41:01 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/23 11:33:12 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/24 10:26:26 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned char	*u_dest;
-	unsigned char	*u_src;
+	char	c;
 
-	if (!dest && !src)
-		return (NULL);
-	u_dest = (unsigned char *)dest;
-	u_src = (unsigned char *)src;
-	while (n--)
-		*u_dest++ = *u_src++;
-	return (dest);
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	c = (n % 10) + '0';
+	write(fd, &c, 1);
 }
 
-/*int main(void)
+/*#include <fcntl.h>
+int	main(void)
 {
-	char src[] = "Hello, world!";
-	char dest[2];
+	int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
-	ft_memcpy(dest, src, strlen(src) + 1);
-	printf("Source: %s\n", src);
-	printf("Destination: %s\n", dest);
+	ft_putnbr_fd(5422, fd);
+	close(fd);
 
 	return (0);
 }*/

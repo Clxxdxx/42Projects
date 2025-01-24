@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:18:30 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/22 11:11:42 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:56:25 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,21 @@ static char	*get_word(char const *s, char c, size_t *i)
 	return (word);
 }
 
+static void	free_array(char **array)
+{
+	size_t	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
 static char	**fill_result(char const *s, char c, size_t num_words)
 {
 	char	**result;
@@ -73,7 +88,10 @@ static char	**fill_result(char const *s, char c, size_t num_words)
 	{
 		result[j] = get_word(s, c, &i);
 		if (!result[j])
+		{
+			free_array(result);
 			return (NULL);
+		}
 		j++;
 	}
 	result[j] = NULL;
@@ -94,33 +112,41 @@ char	**ft_split(char const *s, char c)
 		if (s[0] == '\0')
 			result[0] = NULL;
 		else
+		{
 			result[0] = ft_strdup(s);
+			if (!result[0])
+			{
+				free(result);
+				return (NULL);
+			}
+		}
 		result[1] = NULL;
 		return (result);
 	}
 	return (fill_result(s, c, count_words(s, c)));
 }
 
-/*int main(void)
+/*cc -Wall -Wextra -Werror -o test_split ft_split.c ft_strdup.c
+int main(void)
 {
-    char *str = "Hello,,world,42,,libft";
-    char del = ',';
-    char **result;
-    size_t i;
+	char *str = "Hello world 42 libft";
+	char del = ' ';
+	char **result;
+	size_t i;
 
-    result = ft_split(str, del);
+	result = ft_split(str, del);
 
-    if (!result)
-    {
-        printf("Error");
-        return (1);
-    }
+	if (!result)
+	{
+		printf("Error");
+		return (1);
+	}
 
-    i = 0;
-    while (result[i])
-    {
-        printf("%zu %s\n", i + 1, result[i]);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (result[i])
+	{
+		printf("%zu %s\n", i + 1, result[i]);
+		i++;
+	}
+	return (0);
 }*/

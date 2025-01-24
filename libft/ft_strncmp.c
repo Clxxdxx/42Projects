@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:07:56 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/17 15:05:08 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:49:42 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 /*int	main(void)
 {
-	char str1[] = "Hola musdo";
-	char str2[] = "Hola mundo";
+	char str1[] = "Hola mundo";
+	char str2[] = "Hola musdo";
 
-    printf("%d",ft_strncmp("abcdef", "abc\375xx", 5));
+    printf("%d",ft_strncmp(str1, str2, 15));
 
 	return 0;
 }*/
