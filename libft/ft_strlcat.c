@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:47:55 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 11:38:49 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:14:32 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[s_dst + i] = '\0';
 	return (s_dst + s_src);
 }
-
-/*int main()
-{
-	char dest[20] = "Hello, ";
-	char src[] = "World123456789!";
-	size_t size = 20;
-
-	size_t result = ft_strlcat(dest, src, size);
-
-	printf("Tamaño: %zu\n", result);
-	printf("Resultao: %s\n", dest);
-
-	return (0);
-}*/

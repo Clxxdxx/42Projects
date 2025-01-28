@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:07:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/17 13:26:01 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:14:37 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	return (i);
 }
-
-/*int main(void)
-{
-	char src[] = "Hola, mundo";
-	char dst[20];
-	size_t copied;
-
-	ft_strlcpy(dst, src, sizeof(dst));
-
-	printf("Cadena copiada: %s\n", dst);
-	return (0);
-}*/

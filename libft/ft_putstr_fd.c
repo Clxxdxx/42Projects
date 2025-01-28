@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:42:40 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/24 10:27:17 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:14:06 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,3 @@ void	ft_putstr_fd(char *s, int fd)
 		}
 	}
 }
-
-/*#include <fcntl.h>
-int	main(void)
-{
-	int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-
-	ft_putstr_fd("Hola Claudio", fd);
-	close(fd);
-
-	return (0);
-}
-*/

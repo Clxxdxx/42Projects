@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:18:30 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/24 10:56:25 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:14:10 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,28 +125,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (fill_result(s, c, count_words(s, c)));
 }
-
-/*cc -Wall -Wextra -Werror -o test_split ft_split.c ft_strdup.c
-int main(void)
-{
-	char *str = "Hello world 42 libft";
-	char del = ' ';
-	char **result;
-	size_t i;
-
-	result = ft_split(str, del);
-
-	if (!result)
-	{
-		printf("Error");
-		return (1);
-	}
-
-	i = 0;
-	while (result[i])
-	{
-		printf("%zu %s\n", i + 1, result[i]);
-		i++;
-	}
-	return (0);
-}*/

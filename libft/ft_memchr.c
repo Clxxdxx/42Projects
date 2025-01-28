@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:41:21 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/22 15:35:19 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:13:33 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
-/*int main()
-{
-	char str[] = "Hola Claudio";
-	char caracter = 'a';
-
-	char *result = ft_memchr(str, caracter, 8);
-
-	if (result)
-		printf("Caracter encontrado: '%c' en la posicion %ld\n", *result, result
-			- str);
-	else
-		printf("Caracter no encontrado\n");
-
-	return (0);
-}*/

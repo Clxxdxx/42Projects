@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:48:48 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/20 16:17:04 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:15:02 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(str, s1 + start, len + 1);
 	return (str);
 }
-
-/*int main(void)
-{
-	char *s1 = "Claudio";
-	char *set = "Clad";
-	char *result;
-
-	result = ft_strtrim(s1, set);
-
-
-	printf("Resultado: '%s'\n", result);
-
-
-	return (0);
-}*/

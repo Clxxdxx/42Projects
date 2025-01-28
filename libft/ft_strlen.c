@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:10:38 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/17 11:17:21 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:14:43 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,3 @@ size_t	ft_strlen(const char *str)
 	}
 	return (count);
 }
-
-/*int main(void)
-{
-	const char *str = "Hola, mundo!";
-	size_t length;
-
-	length = ft_strlen(str);
-	printf("Longitud: %zu\n", length);
-
-	return (0);
-}*/

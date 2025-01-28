@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:24:00 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/20 12:10:40 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:15:05 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substring[i] = '\0';
 	return (substring);
 }
-
-/*int main()
-{
-	char *str = "Hola, mundo!";
-	char *substr = ft_substr(str, 7, 5);
-
-	printf("Substring: %s\n", substr);
-
-
-	return (0);
-}*/

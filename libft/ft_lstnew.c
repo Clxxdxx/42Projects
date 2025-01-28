@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:23:08 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/24 11:56:54 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:13:25 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,3 @@ t_list	*ft_lstnew(void *content)
 	list->next = NULL;
 	return (list);
 }
-
-/*int main() {
-    int value = 42;
-    
-    t_list *node = ft_lstnew(&value);
-    
-    printf("Contenido del nodo: %d\n", *(int *)node->content);
-    
-}*/

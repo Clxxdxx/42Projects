@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcp.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:16:36 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/15 15:27:49 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:13:37 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-/*int	main(void)
-{
-	char str1[] = "Hola musdo";
-	char str2[] = "Hola mundo";
-
-	printf("%d",ft_memcmp(str1, str2, 18));
-
-	return (0);
-}*/
