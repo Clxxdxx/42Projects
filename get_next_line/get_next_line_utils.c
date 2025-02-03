@@ -6,35 +6,41 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:39:58 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/31 11:11:59 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:59:24 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*str;
-	size_t			i;
+	unsigned char	*u_dest;
+	unsigned char	*u_src;
 
-	str = s;
-	i = 0;
-	while (i < n)
-	{
-		str[i] = (unsigned char)c;
-		i++;
-	}
-	return (str);
+	if (!dest && !src)
+		return (NULL);
+	u_dest = (unsigned char *)dest;
+	u_src = (unsigned char *)src;
+	while (n--)
+		*u_dest++ = *u_src++;
+	return (dest);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*str;
+	unsigned char	*str;
+	size_t			total;
+	size_t			i;
 
-	str = malloc(nmemb * size);
+	total = nmemb * size;
+	if (size && nmemb > SIZE_MAX / size)
+		return (NULL);
+	str = malloc(total);
 	if (str == NULL)
-		return (str);
-	ft_memset(str, 0, nmemb * size);
+		return (NULL);
+	i = 0;
+	while (i < total)
+		str[i++] = 0;
 	return (str);
 }
 
@@ -99,45 +105,3 @@ char	*ft_strdup(const char *s)
 	dup[len] = '\0';
 	return (dup);
 }
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	if (size > 0)
-	{
-		while (i < size - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	while (src[i] != '\0')
-		i++;
-	return (i);
-}
-
-/*#include <fcntl.h>
-int main()
-{
-    int fd = open("prueba", O_RDONLY);
-
-    char buffer[1024];
-    ssize_t bytes_leidos;
-    
-    bytes_leidos = read(fd, buffer, sizeof(buffer) - 1);
-
-    
-    buffer[bytes_leidos] = '\0';
-
-    int linea = count_characters_line(buffer);
-    printf("Total de la linea: %d\n", linea);
-
-    int total = count_all_characters(buffer);
-    printf("Total de caracteres: %d\n", total);
-
-    close(fd);
-    return 0;
-}*/
