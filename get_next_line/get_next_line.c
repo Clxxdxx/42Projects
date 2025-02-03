@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:39:56 by clalopez          #+#    #+#             */
-/*   Updated: 2025/02/03 12:37:10 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:45:44 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ static char	*extract_line(char **remainder)
 	return (line);
 }
 
+static char	*free_and_return_null(char *buffer, char **remainder)
+{
+	free(buffer);
+	free(*remainder);
+	*remainder = NULL;
+	return (NULL);
+}
+
 static char	*read_file(int fd, char **remainder)
 {
 	char	*buffer;
@@ -58,32 +66,18 @@ static char	*read_file(int fd, char **remainder)
 
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-	{
-		free(*remainder);
-		*remainder = NULL;
-		return (NULL);
-	}
+		return (free_and_return_null(buffer, remainder));
 	while (!ft_strchr(*remainder, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
-		{
-			free(buffer);
-			free(*remainder);
-			*remainder = NULL;
-			return (NULL);
-		}
+			return (free_and_return_null(buffer, remainder));
 		if (bytes_read == 0)
 			break ;
 		buffer[bytes_read] = '\0';
 		temp = ft_strjoin(*remainder, buffer);
 		if (!temp)
-		{
-			free(buffer);
-			free(*remainder);
-			*remainder = NULL;
-			return (NULL);
-		}
+			return (free_and_return_null(buffer, remainder));
 		free(*remainder);
 		*remainder = temp;
 	}
@@ -97,11 +91,8 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 	{
-		if (remainder)
-		{
-			free(remainder);
-			remainder = NULL;
-		}
+		free(remainder);
+		remainder = NULL;
 		return (NULL);
 	}
 	if (!remainder)
