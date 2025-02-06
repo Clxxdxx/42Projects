@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:39:56 by clalopez          #+#    #+#             */
-/*   Updated: 2025/02/03 14:45:44 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/02/06 12:07:36 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ static char	*extract_line(char **remainder)
 		len++;
 	line = (char *)malloc(len + 1);
 	if (!line)
+	{
+		free(*remainder);
+		*remainder = NULL;
 		return (NULL);
+	}
 	ft_memcpy(line, *remainder, len);
 	line[len] = '\0';
 	update_remainder(remainder, len);
@@ -67,6 +71,7 @@ static char	*read_file(int fd, char **remainder)
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (free_and_return_null(buffer, remainder));
+	buffer[0] = '\0';
 	while (!ft_strchr(*remainder, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
@@ -89,7 +94,7 @@ char	*get_next_line(int fd)
 {
 	static char	*remainder;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		free(remainder);
 		remainder = NULL;
@@ -115,7 +120,6 @@ char	*get_next_line(int fd)
 /*#include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
-
 int	main(void)
 {
 	int		fd;
@@ -123,12 +127,6 @@ int	main(void)
 	int num_line = 0;
 
 	fd = open("prueba", O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error al abrir el archivo");
-		return (1);
-	}
-
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("[%d]%s",num_line, line);
@@ -138,4 +136,4 @@ int	main(void)
 
 	close(fd);
 	return (0);
- }*/
+}*/

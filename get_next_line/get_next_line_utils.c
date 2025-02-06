@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:39:58 by clalopez          #+#    #+#             */
-/*   Updated: 2025/02/03 11:59:24 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:54:47 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	unsigned char	*str;
-	size_t			total;
-	size_t			i;
-
-	total = nmemb * size;
-	if (size && nmemb > SIZE_MAX / size)
-		return (NULL);
-	str = malloc(total);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (i < total)
-		str[i++] = 0;
-	return (str);
-}
-
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
@@ -60,27 +42,23 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
-	size_t	total_length;
+	size_t	len1;
+	size_t	len2;
 
-	total_length = 0;
-	j = 0;
-	i = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	while (s1[total_length])
-		total_length++;
-	while (s2[j++])
-		total_length++;
-	str = (char *)malloc(total_length + 1);
+	len1 = 0;
+	while (s1[len1])
+		len1++;
+	len2 = 0;
+	while (s2[len2])
+		len2++;
+	str = (char *)malloc(len1 + len2 + 1);
 	if (!str)
 		return (NULL);
-	while (*s1)
-		str[i++] = *s1++;
-	while (*s2)
-		str[i++] = *s2++;
-	str[i] = '\0';
+	ft_memcpy(str, s1, len1);
+	ft_memcpy(str + len1, s2, len2);
+	str[len1 + len2] = '\0';
 	return (str);
 }
 
