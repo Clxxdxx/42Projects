@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   convert_char_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 16:01:42 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/17 10:30:23 by clalopez         ###   ########.fr       */
+/*   Created: 2025/02/10 14:33:34 by clalopez          #+#    #+#             */
+/*   Updated: 2025/02/19 15:07:14 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "ft_printf.h"
+
+void	print_char(char c, size_t *count)
 {
-	return (c >= '0' && c <= '9');
+	write(1, &c, 1);
+	(*count)++;
 }
-/*#include <stdio.h>
-int	main(void)
+
+void	print_string(char *str, size_t *count)
 {
-	char car = '7';
+	int	i;
 
-	if (ft_isdigit(car))
-		printf("'%c'Si\n", car);
-	else
-		printf("'%c'No\n", car);
-
-	return (0);
-}*/
+	i = 0;
+	if (!str)
+		str = "(null)";
+	while (str[i] != '\0')
+	{
+		print_char(str[i], count);
+		i++;
+	}
+}

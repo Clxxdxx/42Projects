@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:47:55 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:14:32 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:00:59 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[s_dst + i] = '\0';
 	return (s_dst + s_src);
 }
+
+/*int main()
+{
+	char dest[30] = "Hello, ";
+	char *src = "Claudio123456789!";
+	size_t size = 16;
+
+	ft_strlcat(dest, src, size);
+
+	printf("Resultao: %s\n", dest);
+
+	return (0);
+}*/

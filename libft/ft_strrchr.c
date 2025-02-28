@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:44:05 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:14:58 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:24:34 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,18 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *)s);
 	return (last);
 }
+
+/*int main()
+{
+	char palabra[] = "palabra";
+	char caracter = 'z';
+
+	char *resultado = ft_strrchr(palabra, caracter);
+
+	if (resultado)
+		printf("Enconrado");
+	else
+		printf("No");
+
+	return (0);
+}*/

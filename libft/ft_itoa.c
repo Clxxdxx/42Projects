@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:24:06 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:13:01 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:46:15 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,3 +60,14 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 	return (str);
 }
+
+/*int	main(void)
+{
+	int	nbr;
+	int	result;
+
+	nbr = -17;
+	result = count_digits(nbr);
+	char *result2 = ft_itoa(nbr); 
+	printf("String: %s\n", result2);                          
+}*/

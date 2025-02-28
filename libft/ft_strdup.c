@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:26:41 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:14:17 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:11:23 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,12 @@ char	*ft_strdup(const char *s)
 	dup[len] = '\0';
 	return (dup);
 }
+
+/*int main()
+{
+	const char *original = "Hola, claudio";
+	char *copia = ft_strdup(original);
+
+	printf("Cadena original: %s\n", original);
+	printf("Cadena duplicada: %s\n", copia);
+}*/

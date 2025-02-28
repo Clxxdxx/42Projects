@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_memcp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 15:04:43 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/27 14:06:21 by clalopez         ###   ########.fr       */
+/*   Created: 2025/01/15 15:16:36 by clalopez          #+#    #+#             */
+/*   Updated: 2025/01/15 15:27:49 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned int	i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+	size_t			i;
 
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i] != '\0')
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		f(i, &s[i]);
+		if (ptr1[i] != ptr2[i])
+			return (ptr1[i] - ptr2[i]);
 		i++;
 	}
+	return (0);
 }
 
-/*void lower(unsigned int i, char *c)
+/*int	main(void)
 {
-    (void)i;
-    if (*c >= 'A' && *c <= 'Z')
-    {
-        *c = *c + 32;
-    }
-}
-//cc -Wall -Wextra -Werror -o test_striteri ft_striteri.c ft_strlen.c
-int main(void)
-{
-    char str[] = "Hola Claudio";
+	char str1[] = "Hola musdo";
+	char str2[] = "Hola mundo";
 
-    ft_striteri(str, lower);
+	printf("%d",ft_memcmp(str1, str2, 18));
 
-    printf("%s\n", str);
-
-    return 0;
+	return (0);
 }*/

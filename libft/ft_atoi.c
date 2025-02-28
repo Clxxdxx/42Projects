@@ -6,11 +6,11 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:35:49 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:12:28 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/02/26 10:47:14 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {
@@ -39,3 +39,12 @@ int	ft_atoi(const char *nptr)
 	}
 	return (result * signo);
 }
+
+/*int	main(void)
+{
+	char	num[] = "-123dd2";
+	int		result;
+
+	result = ft_atoi(num);
+	printf("Resultado %d", result);
+}*/

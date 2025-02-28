@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:25:24 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:13:48 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:44:20 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,14 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+/*int main(void)
+{
+    char src[] = "abcdef";
+	char dest[] = "cddef";
+
+    ft_memmove(dest, src, 10);
+    printf("Resultado: %s\n", dest);
+
+    return 0;
+}*/

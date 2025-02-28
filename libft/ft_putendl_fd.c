@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:14:47 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:13:58 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:25:35 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,14 @@ void	ft_putendl_fd(char *s, int fd)
 		write(fd, "\n", 1);
 	}
 }
+
+/*#include <fcntl.h>
+int	main(void)
+{
+	int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+
+	ft_putendl_fd("Patata", fd);
+	close(fd);
+
+	return (0);
+}*/

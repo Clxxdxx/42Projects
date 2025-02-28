@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:07:56 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:14:49 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:28:02 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,13 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
+/*int	main(void)
+{
+	char str1[] = "Hola cluadio";
+	char str2[] = "Hola claudio";
+
+    printf("%d",ft_strncmp(str1, str2, 10));
+
+	return 0;
+}*/

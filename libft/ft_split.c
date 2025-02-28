@@ -6,14 +6,14 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:18:30 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:14:10 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:01:16 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	count_words(char const *s, char c)
+size_t	count_words(char const *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -33,7 +33,7 @@ static size_t	count_words(char const *s, char c)
 	return (count + 1);
 }
 
-static char	*get_word(char const *s, char c, size_t *i)
+char	*get_word(char const *s, char c, size_t *i)
 {
 	size_t	start;
 	size_t	len;
@@ -58,7 +58,7 @@ static char	*get_word(char const *s, char c, size_t *i)
 	return (word);
 }
 
-static void	free_array(char **array)
+void	free_array(char **array)
 {
 	size_t	i;
 
@@ -73,7 +73,7 @@ static void	free_array(char **array)
 	free(array);
 }
 
-static char	**fill_result(char const *s, char c, size_t num_words)
+char	**fill_result(char const *s, char c, size_t num_words)
 {
 	char	**result;
 	size_t	i;
@@ -125,3 +125,22 @@ char	**ft_split(char const *s, char c)
 	}
 	return (fill_result(s, c, count_words(s, c)));
 }
+
+//cc -Wall -Wextra -Werror -o test_split ft_split.c ft_strdup.c
+/*int main(void)
+{
+	char *str = "Hola claudio 42";
+	char del = ' ';
+	char **result;
+	size_t i;
+
+	result = ft_split(str, del);
+
+	i = 0;
+	while (result[i])
+	{
+		printf("%s\n", result[i]);
+		i++;
+	}
+	return (0);
+}*/

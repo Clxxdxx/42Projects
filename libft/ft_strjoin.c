@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:06:12 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:14:29 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:10:34 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[i] = '\0';
 	return (str);
 }
+
+/*int	main(void)
+{
+	char *s1 = "Hola ";
+	char *s2 = "Claudio";
+	char *result;
+
+	result = ft_strjoin(s1, s2);
+
+	printf("Resultado: %s\n", result);
+
+	return (0);
+}*/

@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:16:36 by clalopez          #+#    #+#             */
-/*   Updated: 2025/01/28 10:13:37 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:30:09 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,13 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
+
+/*int	main(void)
+{
+	char str1[] = "Hola claudio";
+	char str2[] = "Hola cluadio";
+
+	printf("%d",ft_memcmp(str1, str2, 18));
+
+	return (0);
+}*/
