@@ -29,6 +29,7 @@ void rra(t_list **stack_a)
 	second_last->next = NULL;
 	last->next = *stack_a;
 	*stack_a = last;
+	ft_printf("rra\n");
 }
 
 void rrb(t_list **stack_b)
@@ -48,10 +49,12 @@ void rrb(t_list **stack_b)
 	second_last->next = NULL;
 	last->next = *stack_b;
 	*stack_b = last;
+	ft_printf("rrb\n");
 }
 
 void rrr(t_list **stack_a, t_list **stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
+	ft_printf("rrr\n");
 }

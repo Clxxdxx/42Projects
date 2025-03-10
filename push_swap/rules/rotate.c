@@ -25,6 +25,7 @@ void ra(t_list **stack_a)
 	while (last->next)
 		last = last->next;
 	last->next = first;
+	ft_printf("ra\n");
 }
 
 void rb(t_list **stack_b)
@@ -40,10 +41,12 @@ void rb(t_list **stack_b)
 	while (last->next)
 		last = last->next;
 	last->next = first;
+	ft_printf("rb\n");
 }
 
 void rr(t_list **stack_a, t_list **stack_b)
 {
 	ra(stack_a);
 	rb(stack_b);
+	ft_printf("rr\n");
 }
