@@ -26,19 +26,14 @@ void quicksort(int *arr, int low, int high)
             if (arr[j] <= pivot)
             {
                 i++;
-                // Intercambiar arr[i] y arr[j]
                 temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
         }
-
-        // Intercambiar arr[i + 1] y arr[high]
         temp = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp;
-
-        // Recursivamente ordenar las dos mitades
         quicksort(arr, low, i);
         quicksort(arr, i + 2, high);
     }
@@ -50,21 +45,13 @@ int get_pivot(t_list *stack_a)
     int *values = (int *)malloc(sizeof(int) * size);
     t_list *tmp = stack_a;
     int i = 0;
-
-    // Llenar el array con los valores de stack_a
     while (tmp)
     {
         values[i++] = *(int *)tmp->content;
         tmp = tmp->next;
     }
-
-    // Ordenar el array
     quicksort(values, 0, size - 1);
-
-    // Elegir el pivote como el valor mediano
     int pivot = values[size / 2];
-
-    // Liberar la memoria
     free(values);
 
     return pivot;
@@ -79,8 +66,6 @@ int get_percentil(t_list *stack)
     int *arr = malloc(size * sizeof(int));
     if (!arr)
         return 0;
-
-    // Copiar valores en un array
     t_list *temp = stack;
     int i = 0;
     while (temp)
@@ -89,8 +74,6 @@ int get_percentil(t_list *stack)
         temp = temp->next;
         i++;
     }
-
-    // Ordenar array (Bubble Sort con while)
     int swapped = 1;
     while (swapped)
     {
@@ -112,6 +95,5 @@ int get_percentil(t_list *stack)
     free(arr);
     return percentil;
 }
-
 
 

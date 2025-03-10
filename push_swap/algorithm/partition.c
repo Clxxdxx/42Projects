@@ -21,18 +21,17 @@ void partition(t_list **stack_a, t_list **stack_b, int pivot)
     {
         if (*(int *)tmp->content <= pivot) 
         {
-            pb(stack_a, stack_b);  // Mueve el valor menor o igual al pivote a stack_b
+            pb(stack_a, stack_b); 
         } 
         else 
         {
-            ra(stack_a);  // Rota la pila A si el valor es mayor al pivote
+            ra(stack_a);
 
         }
-        tmp = *stack_a;  // Actualiza la cabeza de stack_a
+        tmp = *stack_a;
         tmp = tmp->next;
     }
 }
-
 
 
 

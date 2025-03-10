@@ -16,7 +16,7 @@ void push_a_to_b(t_list **stack_a, t_list **stack_b)
 {
     if (*stack_a) 
     {
-        pb(stack_a, stack_b);  // Mueve de A a B
+        pb(stack_a, stack_b);
     }
 }
 
@@ -24,7 +24,6 @@ void push_b_to_a(t_list **stack_b, t_list **stack_a)
 {
     if (*stack_b) 
     {
-        pa(stack_b, stack_a);  // Mueve de B a A
+        pa(stack_b, stack_a);
     }
 }
-

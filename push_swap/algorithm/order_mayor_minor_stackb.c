@@ -47,37 +47,25 @@ void order_mayor_minor_stackb(t_list **stack_b, t_list **stack_a)
 
     while (*stack_b)
     {
-        // Encuentra el valor máximo y su posición en stack_b
         find_max_node(*stack_b, &max_value, &max_pos);
-        //ft_printf("Max value in B: %d, Max pos: %d\n", max_value, max_pos);
-
-        // Mover el valor máximo a la cima de stack_b
         if (max_pos <= size_b / 2)
         {
             //ft_printf("MM");
-            // Rotamos hacia arriba hasta encontrar el valor máximo
             while (*(int *)(*stack_b)->content != max_value)
-                rb(stack_b);  // Rotar stack_b hacia arriba
+                rb(stack_b);
         }
         else
         {
             //ft_printf("BB");
-            // Rotamos hacia abajo hasta encontrar el valor máximo
             while (*(int *)(*stack_b)->content != max_value)
-                rrb(stack_b);  // Rotar stack_b hacia abajo
+                rrb(stack_b);
         }
-
-        // Mover el máximo de B a A
-        pa(stack_b, stack_a);  // Descomenta esta línea
-        //ft_printf("Ejecutando pa: movido %d de B a A\n", max_value);
-
-        // Actualizamos el tamaño de stack_b después de mover un elemento
+        pa(stack_b, stack_a);
         size_b = ft_lstsize(*stack_b);
 
-        //ft_print_stacks(*stack_a, *stack_b);  // Mostrar el estado de las pilas
+        //ft_print_stacks(*stack_a, *stack_b);
     }
 }
-
 
 
 

@@ -49,4 +49,7 @@ int get_percentil(t_list *stack);
 void order_mayor_minor_stackb(t_list **stack_b, t_list **stack_a);
 void free_args(char **args);
 
+
+
+
 #endif

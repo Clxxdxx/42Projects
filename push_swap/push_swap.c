@@ -22,16 +22,14 @@ int main(int argc, char **argv)
     if (show_error(argc, argv) == 0)
         return (write(2, "Error\n", 6), 1);
 
-    stack_a = init_stack_a(argc, argv);  // Inicializa stack_a con los argumentos
+    stack_a = init_stack_a(argc, argv);
     stack_b = NULL;
 
-    //ft_print_stacks(stack_a, stack_b);  // Imprime el estado inicial de las pilas
+    //ft_print_stacks(stack_a, stack_b);
 
-    ksort(&stack_a, &stack_b);  // Ordena las pilas
+    ksort(&stack_a, &stack_b);  
 
-    //ft_print_stacks(stack_a, stack_b);  // Imprime el estado final de las pilas
-
-    // Limpia las pilas al final
+    ft_print_stacks(stack_a, stack_b); 
     ft_lstclear(&stack_a, free);
     ft_lstclear(&stack_b, free);
 

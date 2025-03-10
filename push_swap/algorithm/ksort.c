@@ -19,24 +19,20 @@ void ksort(t_list **stack_a, t_list **stack_b)
     if (ft_lstsize(*stack_a) <= 1)
         return;
 
-    pivot = get_pivot(*stack_a); // Obtén el pivote
+    pivot = get_pivot(*stack_a);
 
-    partition(stack_a, stack_b, pivot); // Particiona la pila A en A y B según el pivote
+    partition(stack_a, stack_b, pivot); 
 
-    // Ordenar stack_b de mayor a menor
 
-    // Llama a push_back solo si stack_a no está vacío
     if (*stack_a)
         push_a_to_b(stack_a, stack_b);
-    while (*stack_b) // No necesitamos 'next' aquí
+    while (*stack_b)
     {
-        order_mayor_minor_stackb(stack_b, stack_a); // Ordenar stack_b
+        order_mayor_minor_stackb(stack_b, stack_a);
     }
-
-    // Ahora mueve los elementos de B a A
-    while (*stack_b) // Si stack_b no está vacío
+    while (*stack_b) 
     {
-        pa(stack_a, stack_b); // Mueve un elemento de B a A
+        pa(stack_a, stack_b);
     }
 }
 
