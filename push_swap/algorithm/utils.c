@@ -39,23 +39,29 @@ void quicksort(int *arr, int low, int high)
     }
 }
 
-int get_pivot(t_list *stack_a)
+int *get_pivots(t_list *stack, int parts)
 {
-    int size = ft_lstsize(stack_a);
-    int *values = (int *)malloc(sizeof(int) * size);
-    t_list *tmp = stack_a;
+    int size = ft_lstsize(stack);
+    int *arr = malloc(sizeof(int) * size);
+    int *pivots = malloc(sizeof(int) * parts);
     int i = 0;
+
+    t_list *tmp = stack;
     while (tmp)
     {
-        values[i++] = *(int *)tmp->content;
+        arr[i++] = *(int *)tmp->content;
         tmp = tmp->next;
     }
-    quicksort(values, 0, size - 1);
-    int pivot = values[size / 2];
-    free(values);
 
-    return pivot;
+    quicksort(arr, 0, size - 1);
+
+    for (i = 0; i < parts; i++)
+        pivots[i] = arr[(size / parts) * i];
+
+    free(arr);
+    return pivots;
 }
+
 
 int get_percentil(t_list *stack)
 {

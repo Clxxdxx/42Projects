@@ -39,15 +39,18 @@ int	error_non_integer(int argc, char **argv);
 int	error_duplicate_number(int argc, char **argv);
 int	error_out_of_range(int argc, char **argv);
 int show_error(int argc, char **argv);
-void ksort(t_list **stack_a, t_list **stack_b);
-void partition(t_list **stack_a, t_list **stack_b, int pivot);
+//void ksort(t_list **stack_a, t_list **stack_b);
+void partition(t_list **stack_a, t_list **stack_b, int *pivots, int parts);
 void push_a_to_b(t_list **stack_a, t_list **stack_b);
 void push_b_to_a(t_list **stack_b, t_list **stack_a);
-int get_pivot(t_list *stack);
+int *get_pivots(t_list *stack, int parts);
 void quicksort(int *arr, int left, int right);
 int get_percentil(t_list *stack);
 void order_mayor_minor_stackb(t_list **stack_b, t_list **stack_a);
 void free_args(char **args);
+void radix_sort_push_swap(t_list **stack_a, t_list **stack_b);
+int get_max_bits(t_list *stack);
+
 
 
 

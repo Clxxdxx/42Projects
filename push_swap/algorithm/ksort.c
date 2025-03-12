@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void ksort(t_list **stack_a, t_list **stack_b)
+/*void ksort(t_list **stack_a, t_list **stack_b)
 {
     int pivot;
 
@@ -34,7 +34,52 @@ void ksort(t_list **stack_a, t_list **stack_b)
     {
         pa(stack_a, stack_b);
     }
+}*/
+
+void radix_sort_push_swap(t_list **stack_a, t_list **stack_b)
+{
+    int max_bits = get_max_bits(*stack_a);
+    int size = ft_lstsize(*stack_a);
+    int i = 0, j;
+
+    while (i < max_bits)
+    {
+        j = 0;
+        while (j < size)
+        {
+            if ((*(int *)(*stack_a)->content >> i) & 1)
+                ra(stack_a);
+            else
+                pb(stack_a, stack_b);
+            j++;
+        }
+        while (*stack_b)
+            pa(stack_b, stack_a);
+        i++;
+    }
 }
+
+int get_max_bits(t_list *stack)
+{
+    int max_value = 0;
+    int max_bits = 0;
+    t_list *tmp = stack;
+
+    // Encontrar el valor máximo en la lista
+    while (tmp)
+    {
+        if (*(int *)tmp->content > max_value)
+            max_value = *(int *)tmp->content;
+        tmp = tmp->next;
+    }
+
+    // Contar cuántos bits son necesarios para representar max_value
+    while ((max_value >> max_bits) != 0)
+        max_bits++;
+
+    return max_bits;
+}
+
 
 /*void sort_stack_a(t_list **stack_a, t_list **stack_b)
 {

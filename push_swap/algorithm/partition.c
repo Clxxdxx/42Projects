@@ -12,26 +12,30 @@
 
 #include "../push_swap.h"
 
-void partition(t_list **stack_a, t_list **stack_b, int pivot)
+void partition(t_list **stack_a, t_list **stack_b, int *pivots, int parts)
 {
-    t_list *tmp;
+    int size = ft_lstsize(*stack_a);
+    int i = 0;
 
-    tmp = *stack_a;
-    while (tmp) 
+    while (i < size)
     {
-        if (*(int *)tmp->content <= pivot) 
+        int value = *(int *)(*stack_a)->content;
+        int j = 0;
+        while (j < parts)
         {
-            pb(stack_a, stack_b); 
-        } 
-        else 
-        {
-            ra(stack_a);
-
+            if (value <= pivots[j])
+            {
+                pb(stack_a, stack_b);
+                break;
+            }
+            j++;
         }
-        tmp = *stack_a;
-        tmp = tmp->next;
+        if (j == parts)
+            ra(stack_a);
+        i++;
     }
 }
+
 
 
 

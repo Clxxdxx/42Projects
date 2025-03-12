@@ -27,9 +27,9 @@ int main(int argc, char **argv)
 
     //ft_print_stacks(stack_a, stack_b);
 
-    ksort(&stack_a, &stack_b);  
-
-    ft_print_stacks(stack_a, stack_b); 
+    //ksort(&stack_a, &stack_b);  
+    radix_sort_push_swap(&stack_a, &stack_b);
+    //ft_print_stacks(stack_a, stack_b); 
     ft_lstclear(&stack_a, free);
     ft_lstclear(&stack_b, free);
 
