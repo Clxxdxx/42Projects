@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:12:04 by clalopez          #+#    #+#             */
-/*   Updated: 2025/02/28 12:31:43 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/22 14:12:12 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	error_non_integer(int argc, char **argv);
 int	error_duplicate_number(int argc, char **argv);
 int	error_out_of_range(int argc, char **argv);
 int show_error(int argc, char **argv);
-//void ksort(t_list **stack_a, t_list **stack_b);
+void ksort(t_list **stack_a, t_list **stack_b);
 void partition(t_list **stack_a, t_list **stack_b, int *pivots, int parts);
 void push_a_to_b(t_list **stack_a, t_list **stack_b);
 void push_b_to_a(t_list **stack_b, t_list **stack_a);
@@ -48,9 +48,9 @@ void quicksort(int *arr, int left, int right);
 int get_percentil(t_list *stack);
 void order_mayor_minor_stackb(t_list **stack_b, t_list **stack_a);
 void free_args(char **args);
-void radix_sort_push_swap(t_list **stack_a, t_list **stack_b);
-int get_max_bits(t_list *stack);
-
+void find_max_node(t_list *stack_b, int *max_value, int *max_pos);
+void	sort_three(t_list **stack);
+int	is_sorted(t_list *stack);
 
 
 
