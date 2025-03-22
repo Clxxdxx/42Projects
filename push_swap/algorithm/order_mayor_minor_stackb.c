@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_duplicate_number.c                           :+:      :+:    :+:   */
+/*   order_mayor_minor_stackb.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:06 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/04 15:30:53 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/22 11:54:56 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,9 @@ void order_mayor_minor_stackb(t_list **stack_b, t_list **stack_a)
             while (*(int *)(*stack_b)->content != max_value)
                 rrb(stack_b);
         }
-        pa(stack_a, stack_b);
+        pa(stack_b, stack_a);
     }
 }
-
 
 
 

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_duplicate_number.c                           :+:      :+:    :+:   */
+/*   ksort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:06 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/04 15:30:53 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/22 11:54:49 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/*void ksort(t_list **stack_a, t_list **stack_b)
+void ksort(t_list **stack_a, t_list **stack_b)
 {
     int pivot;
 
     if (ft_lstsize(*stack_a) <= 1)
         return;
 
-    pivot = get_pivot(*stack_a);
+    pivot = *get_pivots(*stack_a, 8);
 
-    partition(stack_a, stack_b, pivot); 
+    partition(stack_a, stack_b, &pivot, 8); 
 
 
     if (*stack_a)
@@ -32,11 +32,11 @@
     }
     while (*stack_b) 
     {
-        pa(stack_a, stack_b);
+        pa(stack_b, stack_a);
     }
-}*/
+}
 
-void radix_sort_push_swap(t_list **stack_a, t_list **stack_b)
+/* void radix_sort_push_swap(t_list **stack_a, t_list **stack_b)
 {
     int max_bits = get_max_bits(*stack_a);
     int size = ft_lstsize(*stack_a);
@@ -78,7 +78,7 @@ int get_max_bits(t_list *stack)
         max_bits++;
 
     return max_bits;
-}
+} */
 
 
 /*void sort_stack_a(t_list **stack_a, t_list **stack_b)
