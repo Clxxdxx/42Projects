@@ -6,11 +6,11 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 14:01:53 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/22 14:29:18 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:30:22 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static int	biggest_index(t_list *stack)
 {
