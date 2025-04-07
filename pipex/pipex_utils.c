@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:48:50 by clalopez          #+#    #+#             */
-/*   Updated: 2025/04/04 11:11:53 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:09:08 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,20 @@ void	child_process(char *cmd, int in, int out, char **envp)
 	char	**args;
 	char	*path;
 
-	dup2(in, STDIN_FILENO);
-	dup2(out, STDOUT_FILENO);
+	if (dup2(in, STDIN_FILENO) == -1)
+		error_exit("dup2 in");
+	if (dup2(out, STDOUT_FILENO) == -1)
+		error_exit("dup2 out");
+	if (in != STDIN_FILENO)
+		close(in);
+	if (out != STDOUT_FILENO)
+		close(out);
+
 	args = ft_split(cmd, ' ');
 	if (!args || !args[0])
 	{
 		ft_free_split(args);
-		error_exit("Error al hacer split del comando");
+		error_exit("Failure to make split of command");
 	}
 	path = get_full_path(args[0], envp);
 	if (!path)
@@ -57,5 +64,6 @@ void	ft_free_split(char **arr)
 	int	i = 0;
 	while (arr && arr[i])
 		free(arr[i++]);
+		
 	free(arr);
 }

@@ -1,7 +1,7 @@
-NAME = pipex.a
+NAME = pipex
 CC = cc
 CCFLAGS = -Wall -Wextra -Werror
-SRC =	pipex.c pipex_utils.c libft_utils/ft_split.c libft_utils/ft_strcat.c \
+SRC = pipex.c pipex_utils.c libft_utils/ft_split.c libft_utils/ft_strcat.c \
 		libft_utils/ft_strcpy.c libft_utils/ft_strdup.c libft_utils/ft_strlen.c \
 		libft_utils/ft_strncmp.c
 OBJ = $(SRC:.c=.o)
@@ -10,9 +10,9 @@ INCLUDE = pipex.h
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
-%.o: %.c pipex.h
+%.o: %.c $(INCLUDE)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
