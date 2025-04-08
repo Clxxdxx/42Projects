@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:47:55 by clalopez          #+#    #+#             */
-/*   Updated: 2025/04/04 11:58:39 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:15:51 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 char	*ft_strcat(char *dst, const char *src)
 {
-	int	i = 0;
-	int	j = 0;
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
 	while (dst[i])
 		i++;
 	while (src[j])
@@ -27,7 +29,6 @@ char	*ft_strcat(char *dst, const char *src)
 	dst[i + j] = '\0';
 	return (dst);
 }
-
 
 /*int main()
 {

@@ -1,2 +1,0 @@
-USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-clalopez 3393557  0.0  0.0      0     0 pts/0    Z+   14:38   0:00 [sleep] <defunct>

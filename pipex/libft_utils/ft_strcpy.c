@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:07:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/04/04 11:58:42 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:16:00 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (src[i])
 	{
 		dst[i] = src[i];
@@ -23,7 +25,6 @@ char	*ft_strcpy(char *dst, const char *src)
 	dst[i] = '\0';
 	return (dst);
 }
-
 
 /*int main(void)
 {

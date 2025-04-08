@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:48:50 by clalopez          #+#    #+#             */
-/*   Updated: 2025/04/07 14:09:08 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:20:28 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ void	error_exit(const char *msg)
 	exit(EXIT_FAILURE);
 }
 
-void	child_process(char *cmd, int in, int out, char **envp)
+void	dup_and_close(int in, int out)
 {
-	char	**args;
-	char	*path;
-
 	if (dup2(in, STDIN_FILENO) == -1)
 		error_exit("dup2 in");
 	if (dup2(out, STDOUT_FILENO) == -1)
@@ -31,8 +28,17 @@ void	child_process(char *cmd, int in, int out, char **envp)
 		close(in);
 	if (out != STDOUT_FILENO)
 		close(out);
+}
 
+void	child_process(char *cmd, int in, int out, char **envp)
+{
+	char	**args;
+	char	*path;
+
+	dup_and_close(in, out);
 	args = ft_split(cmd, ' ');
+	if (in == -1)
+		exit(EXIT_FAILURE);
 	if (!args || !args[0])
 	{
 		ft_free_split(args);
@@ -54,16 +60,17 @@ void	child_process(char *cmd, int in, int out, char **envp)
 
 void	cmd_not_found(char *cmd)
 {
-	write(2, "command not found: ", 20);
-	write(2, cmd, strlen(cmd));
+	write(2, cmd, ft_strlen(cmd));
+	write(2, ": command not found", 20);
 	write(2, "\n", 1);
 }
 
 void	ft_free_split(char **arr)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (arr && arr[i])
 		free(arr[i++]);
-		
 	free(arr);
 }
