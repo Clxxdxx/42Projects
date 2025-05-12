@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 12:11:43 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/12 12:53:13 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:12:05 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	monithor_thread(t_data *data, t_philo *philo)
 {
 	long			time_now;
-	struct timeval	tv;
 	int				i;
 
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:34 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/08 15:49:04 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:16:15 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	main(int argc, char **argv)
+int	main()
 {
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 12:15:26 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/12 12:52:05 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:58:34 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,32 @@ void	mark_sim_finish(t_data *data)
 	data->simulation_ended = 1;
 	pthread_mutex_unlock(&data->end_mutex);
 	return ;
+}
+
+int	convert_to_int(const char *nptr)
+{
+	int	i;
+	int	result;
+	int	signo;
+
+	result = 0;
+	signo = 1;
+	i = 0;
+	while ((nptr[i] > 8 && nptr[i] < 14) || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-')
+	{
+		signo = -1;
+		i++;
+	}
+	else if (nptr[i] == '+')
+	{
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = result * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (result * signo);
 }

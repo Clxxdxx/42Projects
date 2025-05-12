@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:20 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/12 12:15:21 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:11:39 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,24 @@ void thread_each_philo(t_philo *philo, t_data *data)
 
     while (i < data->num_philos)
     {
-        pthread_create(&philo[i].id, NULL, philo_routine, &philo[i]);
+        pthread_create(&philo[i].thread, NULL, philo_routine, &philo[i]);
         i++;
     }
 }
 
-void monitor_routine(void *arg)
+void *monitor_routine(void *arg)
 {
+    (void)arg;
+
     while (1)
     {
-       printf("Thread monitor executing:\n");
-       usleep(10000);
+        printf("Thread monitor executing:\n");
+        usleep(10000);
     }
     return NULL;
 }
+
+
 
 void thread_monitor()
 {

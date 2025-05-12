@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = src/philo.c src/initializer.c src/forks_functions.c src/parse.c src/init_time.c \
 		src/create_threads.c src/wait_thread_finish.c src/utils.c src/monitor_thread.c \
-		
+		src/philo_actions.c
 
 OBJ = $(SRC:.c=.o)
 

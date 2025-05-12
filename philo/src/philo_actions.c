@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:02:23 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/12 12:37:30 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:15:44 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	eat_philo(t_philo *philo)
 {
 	philo->last_meal_time = get_time_in_ms();
 	printf("\033[31mPhilo %d is eating\033[0m\n", philo->id);
-	sleep_philo(philo->id);
+	sleep_philo(philo);
 	philo->meals_eaten = philo->meals_eaten++;
 }

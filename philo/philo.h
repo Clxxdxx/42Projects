@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:44 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/12 12:55:01 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:13:51 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philo
 	t_data			*data;
 }					t_philo;
 
+int					convert_to_int(const char *nptr);
 int					simulation_has_ended(t_data *data);
 void				mark_sim_finish(t_data *data);
 void				parse_args(int argc, char **argv, t_data *data);
@@ -66,10 +67,10 @@ void				thread_each_philo(t_philo *philo, t_data *data);
 void				wait_thread_finish(t_philo *philo, t_data *data);
 void				monithor_thread(t_data *data, t_philo *philo);
 
-
 // PHILO ACTIONS
 void				sleep_philo(t_philo *philo);
 void				think_philo(t_philo *philo);
+void				eat_philo(t_philo *philo);
 
 // FORKS FUNCTIONS
 void				get_forks(t_philo *philo);
@@ -120,7 +121,6 @@ X	pensar(void), dormir():
 	imprimir_estado()
 	dormir(el_tiempo_correspondiente)
 
-X monitor():
 	mientras simulacion_no_termina:
 		para cada filosofo:
 			si (ahora - last_meal_time) > time_to_die:
