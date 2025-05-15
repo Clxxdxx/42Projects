@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 12:15:26 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/12 14:58:34 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:44:23 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	mark_sim_finish(t_data *data)
 	pthread_mutex_lock(&data->end_mutex);
 	data->simulation_ended = 1;
 	pthread_mutex_unlock(&data->end_mutex);
+	printf("Simulation has finished");
 	return ;
 }
 

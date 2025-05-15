@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:31 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/12 14:59:40 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/14 11:50:29 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	parse_args(int argc, char **argv, t_data *data)
 {
-	if (argc != 6 && argc != 6)
+	if (argc != 6 && argc != 5)
 	{
 		printf("Error\n");
 		return ;
