@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:34 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/15 11:16:50 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:58:01 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	//printf("Init time: %ld\n", data.start_time);
 	while (i < data.num_philos)
 	{
-		//printf("Philo %d meals: %d\n", philos->id, philos->meals_eaten);
+		//printf("PHILO %d MEALS: %d\n", philos->id, philos->meals_eaten);
 		philos[i].id = i;
 		philos[i].meals_eaten = 0;
 		philos[i].last_meal_time = get_time_in_ms();
@@ -48,11 +48,12 @@ int	main(int argc, char **argv)
 	}
 	init_time(&data);
 	create_thread_each_philo(philos, &data);
-	create_thread_monitor();
+	create_thread_monitor(philos);
 	wait_thread_finish(philos, &data);
+	//monitor_thread(philos->data, philos);
 	free_resources(&data, philos);
-
-	printf("OK\n");
+	mark_sim_finish(philos->data);
+	//printf("OK\n");
 	return (0);
 }
 

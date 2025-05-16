@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:44 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/14 13:04:06 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:17:33 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,9 @@ t_philo				init_philo(int id, t_data *data, pthread_mutex_t *left_fork,
 						pthread_mutex_t *right_fork);
 
 // THREADS
-void				create_thread_monitor(void);
+void				create_thread_monitor(t_philo *philos);
 void				create_thread_each_philo(t_philo *philo, t_data *data);
 void				wait_thread_finish(t_philo *philo, t_data *data);
-void				monitor_thread(t_data *data, t_philo *philo);
 
 // PHILO ACTIONS
 void				sleep_philo(t_philo *philo);

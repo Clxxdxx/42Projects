@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:20 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/15 11:08:12 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:22:58 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,42 @@ void	*monitor_routine(void *arg)
 	return (NULL);
 }
 
-void	create_thread_monitor(void)
+void *monitor_thread(void *arg)
 {
-	pthread_t	monitor;
+	t_philo *philo = (t_philo *)arg;
+	t_data *data = philo[0].data;
+	long	time_now;
+	int		i;
+	long	time;
 
-	pthread_create(&monitor, NULL, monitor_routine, NULL);
+	while (!simulation_has_ended(data))
+	{
+		i = 0;
+		while (i < data->num_philos)
+		{
+			time_now = get_time_in_ms();
+			if ((time_now - philo[i].last_meal_time) > data->time_to_die)
+			{
+
+				time = get_time_in_ms();
+				time_now = time - philo->data->start_time;
+				printf("\033[31m[%ld] THE PHILO %d HAS DIED\033[0m\n",time_now, i);
+				mark_sim_finish(data);
+				exit(0);
+			}
+			i++;
+		}
+		usleep(1000);
+	}
+	return (NULL);
 }
+
+
+void	create_thread_monitor(t_philo *philos)
+{
+	pthread_t monitor;
+
+	pthread_create(&monitor, NULL, monitor_routine, (void *)philos);
+	pthread_detach(monitor);
+}
+
