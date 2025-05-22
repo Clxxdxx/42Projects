@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/07 13:00:44 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/16 16:17:33 by clalopez         ###   ########.fr       */
+/*   Created: 2025/05/07 13:00:20 by clalopez          #+#    #+#             */
+/*   Updated: 2025/05/22 16:11:32 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_C
-# define PHILO_C
+#ifndef PHILO_H
+# define PHILO_H
 # include <pthread.h>
 # include <stdarg.h>
 # include <stdio.h>
@@ -43,6 +43,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	mutex_meal;
 	t_data			*data;
 }					t_philo;
 
@@ -58,9 +59,8 @@ void				init_time(t_data *data);
 long				get_time_in_ms(void);
 
 // INITIALIZERS
-void	init_data(t_data *data);
-t_philo				init_philo(int id, t_data *data, pthread_mutex_t *left_fork,
-						pthread_mutex_t *right_fork);
+void				init_data(t_data *data);
+void				init_philos(t_data *data, t_philo *philos);
 
 // THREADS
 void				create_thread_monitor(t_philo *philos);
@@ -76,55 +76,8 @@ void				eat_philo(t_philo *philo);
 void				get_forks(t_philo *philo);
 void				drop_forks(t_philo *philo);
 
+// ERRORS
+void				err_args(int argc, t_data *data);
+void				err_non_int(int argc, char **argv);
+
 #endif
-
-// PSEUDOCODIGO
-/* main():
-	X parsear_argumentos()
-	X init_data()
-	X init_philos()
-	X crear_forks()
-	X iniciar_tiempo()
-	X crear_hilos_para_cada_filosofo()
-	X crear_hilo_monitor()
-	X esperar_a_que_terminen_los_hilos()
-	X liberar_recursos()
-
-X	filosofo_rutina(philo):
-	si philo.id es impar:
-		esperar_un_pequeño_tiempo()
-
-	mientras simulacion_no_termina:
-		pensar()
-		tomar_tenedores(philo)
-		comer()
-		soltar_tenedores(philo)
-		dormir()
-
-X	tomar_tenedores(philo):
-	lock(philo.left_fork)
-	imprimir("ha tomado un tenedor")
-	lock(philo.right_fork)
-	imprimir("ha tomado un tenedor")
-
-x	comer(philo):
-	actualizar(philo.last_meal_time)
-	imprimir("está comiendo")
-	dormir(time_to_eat)
-	incrementar(philo.meals_eaten)
-
-X	soltar_tenedores(philo):
-	unlock(philo.left_fork)
-	unlock(philo.right_fork)
-
-X	pensar(void), dormir():
-	imprimir_estado()
-	dormir(el_tiempo_correspondiente)
-
-	mientras simulacion_no_termina:
-		para cada filosofo:
-			si (ahora - last_meal_time) > time_to_die:
-				imprimir("ha muerto")
-				marcar_simulacion_terminada()
-		si todos han comido suficientes veces:
-			marcar_simulacion_terminada() */

@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:00:20 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/16 16:22:58 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:32:32 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 void	*philo_routine(void *arg)
 {
 	t_philo	*philo;
+	long	now;
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 1)
-		usleep(10000);
+		usleep(philo->data->time_to_eat * 1000 / 2);
 	while (!simulation_has_ended(philo->data))
 	{
-		think_philo(philo);
+		now = get_time_in_ms() - philo->data->start_time;
+		pthread_mutex_lock(&philo->data->print_mutex);
+		pthread_mutex_unlock(&philo->data->print_mutex);
 		get_forks(philo);
 		eat_philo(philo);
 		drop_forks(philo);
 		sleep_philo(philo);
+		think_philo(philo);
 	}
 	return (NULL);
 }
@@ -42,53 +46,50 @@ void	create_thread_each_philo(t_philo *philo, t_data *data)
 	}
 }
 
-void	*monitor_routine(void *arg)
+void	dead_philo(long time_now, int i, t_philo *philo, t_data *data)
 {
-	(void)arg;
-	while (1)
-	{
-		//printf("Thread monitor executing:\n");
-		usleep(10000);
-	}
-	return (NULL);
-}
-
-void *monitor_thread(void *arg)
-{
-	t_philo *philo = (t_philo *)arg;
-	t_data *data = philo[0].data;
-	long	time_now;
-	int		i;
 	long	time;
 
+	if ((time_now - philo[i].last_meal_time) > data->time_to_die)
+	{
+		time = time_now - philo->data->start_time;
+		pthread_mutex_lock(&data->print_mutex);
+		printf("\033[31m[%ld] THE PHILO %d HAS DIED 😵\033[0m\n", time, i);
+		exit(1);
+		pthread_mutex_unlock(&data->print_mutex);
+		mark_sim_finish(data);
+	}
+}
+
+void	*monitor_thread(void *arg)
+{
+	t_philo	*philo;
+	t_data	*data;
+	long	time_now;
+	int		i;
+
+	philo = (t_philo *)arg;
+	data = philo[0].data;
 	while (!simulation_has_ended(data))
 	{
 		i = 0;
 		while (i < data->num_philos)
 		{
+			pthread_mutex_lock(&philo[i].mutex_meal);
 			time_now = get_time_in_ms();
-			if ((time_now - philo[i].last_meal_time) > data->time_to_die)
-			{
-
-				time = get_time_in_ms();
-				time_now = time - philo->data->start_time;
-				printf("\033[31m[%ld] THE PHILO %d HAS DIED\033[0m\n",time_now, i);
-				mark_sim_finish(data);
-				exit(0);
-			}
+			dead_philo(time_now, i, philo, data);
+			pthread_mutex_unlock(&philo[i].mutex_meal);
 			i++;
 		}
-		usleep(1000);
+		usleep(100);
 	}
 	return (NULL);
 }
 
-
 void	create_thread_monitor(t_philo *philos)
 {
-	pthread_t monitor;
+	pthread_t	monitor;
 
-	pthread_create(&monitor, NULL, monitor_routine, (void *)philos);
+	pthread_create(&monitor, NULL, monitor_thread, (void *)philos);
 	pthread_detach(monitor);
 }
-

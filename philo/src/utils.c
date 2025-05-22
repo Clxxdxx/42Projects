@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 12:15:26 by clalopez          #+#    #+#             */
-/*   Updated: 2025/05/15 12:22:35 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:53:28 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ int	simulation_has_ended(t_data *data)
 	return (ended);
 }
 
+void	init_time(t_data *data)
+{
+	struct timeval	start;
+
+	gettimeofday(&start, NULL);
+	data->start_time = (start.tv_sec * 1000) + (start.tv_usec / 1000);
+}
+
 long	get_time_in_ms(void)
 {
 	struct timeval	tv;
@@ -35,7 +43,9 @@ void	mark_sim_finish(t_data *data)
 	pthread_mutex_lock(&data->end_mutex);
 	data->simulation_ended = 1;
 	pthread_mutex_unlock(&data->end_mutex);
+	pthread_mutex_lock(&data->print_mutex);
 	printf("Simulation has finished\n");
+	pthread_mutex_unlock(&data->print_mutex);
 	return ;
 }
 

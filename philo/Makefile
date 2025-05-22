@@ -3,9 +3,9 @@ NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = src/philo.c src/initializer.c src/forks_functions.c src/parse.c src/init_time.c \
-		src/create_threads.c src/wait_thread_finish.c src/utils.c  src/philo_actions.c\
-		src/free_resources.c
+SRC = src/philo.c src/initializer.c src/forks_functions.c src/parse.c \
+      src/create_threads.c src/wait_thread_finish.c src/utils.c src/philo_actions.c \
+      src/free_resources.c src/errors.c
 
 OBJ = $(SRC:.c=.o)
 
