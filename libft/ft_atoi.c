@@ -40,11 +40,3 @@ int	ft_atoi(const char *nptr)
 	return (result * signo);
 }
 
-/*int	main(void)
-{
-	char	num[] = "-123dd2";
-	int		result;
-
-	result = ft_atoi(num);
-	printf("Resultado %d", result);
-}*/
