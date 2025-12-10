@@ -5,23 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 14:19:54 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:03:44 by clalopez         ###   ########.fr       */
+/*   Created: 2025/11/28 12:59:15 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/09 12:05:21 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include <iostream>
+#include "Zombie.hpp"
 
-int main( void ) {
+int	main(int argc, char **argv)
+{
+	(void)argv;
+    if (argc != 1)
+    {
+        std::cout << "Error" << std::endl;
+        return 0;
+    }
     
-    Fixed a;
-    Fixed b( a );
-    Fixed c;
-    c = b;
-    std::cout << a.getRawBits() << std::endl;
-    std::cout << b.getRawBits() << std::endl;
-    std::cout << c.getRawBits() << std::endl;
-    return 0;
+    Zombie* z1 = newZombie("Maria");
+    Zombie* z2 = newZombie("Claudio");
+    Zombie* z3 = newZombie("Jose");
+    
+    z1->announce();
+    delete z1;
 
+    z2->announce();
+    delete z2;
+
+    
+    z3->announce();
+    delete z3;
+    
+    randomChump("Adios");
 }

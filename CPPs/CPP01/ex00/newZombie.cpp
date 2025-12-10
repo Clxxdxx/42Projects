@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 14:19:52 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:03:47 by clalopez         ###   ########.fr       */
+/*   Created: 2025/11/28 12:53:58 by clalopez          #+#    #+#             */
+/*   Updated: 2025/11/28 13:10:29 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
 
-
-#ifndef FIXED_HPP
-#define FIXED_HPP
-#include <iostream>
-#include <string>
-
-using std::cout;
-using std::endl;
-
-class Fixed {
-
-private:
-    int _value;
-    static const int _bits;
-
-public:
-    Fixed(Fixed const &copy);
-    Fixed();
-    ~Fixed();
-    Fixed &operator=(const Fixed &copy);
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
-
-#endif
+Zombie* newZombie( string name )
+{
+    if (name.empty())
+        name = "Default";
+    return new Zombie(name);
+}

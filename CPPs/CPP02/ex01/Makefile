@@ -1,22 +1,27 @@
-SRC = main.cpp Fixed.cpp
-OBJ = $(SRC:.cpp=.o)
-CXX = g++
-RM = rm -f
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXX = c++
+
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = ex01
 
+SRCS = main.cpp Fixed.cpp
+
+OBJS = $(SRCS:.cpp=.o)
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
+
+%.o: %.cpp
+	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	rm -f $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean re

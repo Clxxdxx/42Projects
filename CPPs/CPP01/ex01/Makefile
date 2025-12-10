@@ -2,9 +2,9 @@ CXX = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = ex00
+NAME = ex01
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

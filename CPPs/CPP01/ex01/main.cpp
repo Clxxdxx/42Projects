@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 14:19:52 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:03:47 by clalopez         ###   ########.fr       */
+/*   Created: 2025/11/28 14:41:49 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/04 11:04:51 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
 
+int	main(int argc, char **argv)
+{
+	(void)argv;
+    if (argc != 1)
+    {
+        std::cout << "Error" << std::endl;
+        return 0;
+    }
+	int N = 12;
+	Zombie *horde;
+	horde = zombieHorde(N, "Claudio");
+	for (int i = 0; i < N; i++)
+	{
+		std::cout << "Pos: " << i << ", announce: ";
+		horde[i].announce();
+	}
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
-#include <iostream>
-#include <string>
+	delete[] horde;
 
-using std::cout;
-using std::endl;
-
-class Fixed {
-
-private:
-    int _value;
-    static const int _bits;
-
-public:
-    Fixed(Fixed const &copy);
-    Fixed();
-    ~Fixed();
-    Fixed &operator=(const Fixed &copy);
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
-
-#endif
+	return (0);
+}

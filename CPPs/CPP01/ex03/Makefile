@@ -2,9 +2,9 @@ CXX = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = ex00
+NAME = ex03
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

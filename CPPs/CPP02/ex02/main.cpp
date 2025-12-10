@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 14:19:52 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:03:47 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/09 14:19:40 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/10 11:40:53 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#include "Fixed.hpp"
 #include <iostream>
-#include <string>
 
-using std::cout;
-using std::endl;
-
-class Fixed {
-
-private:
-    int _value;
-    static const int _bits;
-
-public:
-    Fixed(Fixed const &copy);
-    Fixed();
-    ~Fixed();
-    Fixed &operator=(const Fixed &copy);
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
-
-#endif
+int	main(void)
+{
+	Fixed a;
+	Fixed const b(Fixed(5.05f) * Fixed(2));
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max(a, b) << std::endl;
+	return (0);
+}

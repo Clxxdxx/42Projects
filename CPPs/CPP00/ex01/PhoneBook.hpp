@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 14:19:52 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:03:47 by clalopez         ###   ########.fr       */
+/*   Created: 2025/10/27 11:56:17 by clalopez          #+#    #+#             */
+/*   Updated: 2025/10/28 12:18:22 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-
-#ifndef FIXED_HPP
-#define FIXED_HPP
-#include <iostream>
 #include <string>
+#include <cctype> 
+#include <iostream>
+#include <cstdlib>
+#include "Contact.hpp"
 
-using std::cout;
-using std::endl;
-
-class Fixed {
-
+class PhoneBook {
 private:
-    int _value;
-    static const int _bits;
+    Contact contacts[8];
+    int current_id;
+    int nb_contacts;
 
 public:
-    Fixed(Fixed const &copy);
-    Fixed();
-    ~Fixed();
-    Fixed &operator=(const Fixed &copy);
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
+    PhoneBook();
+    ~PhoneBook();
+    void add_contact();
+    void search_contact();
+
 };
+
+
+
 
 #endif

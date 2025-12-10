@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 14:19:52 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:03:47 by clalopez         ###   ########.fr       */
+/*   Created: 2025/11/28 12:17:17 by clalopez          #+#    #+#             */
+/*   Updated: 2025/11/28 12:53:22 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
 
+Zombie::Zombie(string name)
+{
+	this->name = name;
+}
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
-#include <iostream>
-#include <string>
+Zombie::~Zombie()
+{
+	std::cout << name << ": have been destroyed\n";
+}
 
-using std::cout;
-using std::endl;
-
-class Fixed {
-
-private:
-    int _value;
-    static const int _bits;
-
-public:
-    Fixed(Fixed const &copy);
-    Fixed();
-    ~Fixed();
-    Fixed &operator=(const Fixed &copy);
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
-
-#endif
+void Zombie::announce(void)
+{
+    std::cout << name << ":  BraiiiiiiinnnzzzZ...\n";
+}

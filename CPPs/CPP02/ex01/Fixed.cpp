@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/09 14:19:37 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/10 12:06:58 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 const int Fixed::_bits = 8;
@@ -21,8 +33,7 @@ Fixed::~Fixed()
 Fixed &Fixed::operator=(const Fixed &other)
 {
     cout << "Copy assignment operator called" << endl;
-    if (this != &other)
-        _value = other._value;
+    this->_value = other.getRawBits();
     return *this;
 }
 

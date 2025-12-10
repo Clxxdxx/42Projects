@@ -1,20 +1,20 @@
-CXX = c++
+CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = ex00
+NAME = phonebook
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Contact.cpp PhoneBook.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
+	$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp
-	$(CXX) $(CPPFLAGS) -c $< -o $@
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

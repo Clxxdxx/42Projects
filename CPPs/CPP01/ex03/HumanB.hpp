@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 14:19:52 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:03:47 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/01 14:29:11 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/02 14:44:31 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#ifndef FIXED_HPP
-#define FIXED_HPP
-#include <iostream>
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 #include <string>
-
-using std::cout;
-using std::endl;
-
-class Fixed {
+#include <iostream>
+#include "Weapon.hpp"
+class HumanB {
 
 private:
-    int _value;
-    static const int _bits;
-
+    string _name;
+    Weapon *_weapon;
 public:
-    Fixed(Fixed const &copy);
-    Fixed();
-    ~Fixed();
-    Fixed &operator=(const Fixed &copy);
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
+    HumanB(string name);
+    ~HumanB();
+    
+    void setWeapon(Weapon &weapon);
+    void attack();
+}; 
+
+
+
+
 
 #endif
