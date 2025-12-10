@@ -5,40 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 14:28:38 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 12:27:30 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/03 15:13:15 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/04 11:45:24 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include "Weapon.hpp"
-#include <iostream>
-#include <string>
+#include "Harl.hpp"
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	(void)argv;
+    (void)argv;
     if (argc != 1)
     {
-        std::cout << "Error" << std::endl;
+        cout << "Error" << endl;
         return 0;
     }
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.attack();
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	return (0);
+    
+    Harl harl;
+    
+    harl.complain("debug");
+    harl.complain("info");
+    harl.complain("warning");
+    harl.complain("error");
+    harl.complain("asdfghj");
+    
+    return 1;
 }

@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 15:06:24 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/04 14:27:15 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/10 16:22:51 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,14 @@ int main(int argc, char **argv)
     
     string search = argv[2];
     string replace = argv[3];
-    
-    std::ofstream dest("new_file.txt");
+    string aux = string(argv[1]) + ".replace";
+    std::ofstream dest(aux.c_str());
+    if (!dest.is_open())
+    {
+        std::cout << "Error al abrir " << aux << std::endl;
+        file.close();
+        return 1;
+    }
     string line;
     while (std::getline(file, line))
     {
