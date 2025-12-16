@@ -1,0 +1,50 @@
+#include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap() : ClapTrap()
+{
+    _hit_points = 100;
+    _energy_points = 50;
+    _attack_damage = 20;
+    cout << "ScavTrap Default created" << endl;
+}
+
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
+{
+    _hit_points = 100;
+    _energy_points = 50;
+    _attack_damage = 20;
+    cout << "ScavTrap " << _name << " created" << endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
+{
+    cout << "ScavTrap copy constructor called" << endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
+{
+    ClapTrap::operator=(copy);
+    cout << "ScavTrap assignment operator called" << endl;
+    return *this;
+}
+
+ScavTrap::~ScavTrap()
+{
+    cout << "ScavTrap " << _name << " destroyed" << endl;
+}
+
+void ScavTrap::attack(const std::string &target)
+{
+    if (_hit_points < 1 || _energy_points < 1)
+    {
+        cout << "ScavTrap " << _name << " cannot attack" << endl;
+        return;
+    }
+    _energy_points--;
+    cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _attack_damage << " points of damage" << endl;
+}
+
+void ScavTrap::guardGate()
+{
+    cout << "ScavTrap " << _name << " is now in Gate keeper mode." << endl;
+}

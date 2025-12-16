@@ -12,7 +12,7 @@ using std::endl;
 
 class ClapTrap {
 
-private:
+protected:
     string _name;
     int _hit_points;
     int _energy_points;

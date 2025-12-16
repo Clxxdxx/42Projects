@@ -92,7 +92,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	if (_hit_points < 1)
 	{
-		cout << "ClapTrap " << _name << " have died, can't be reapired" << endl;
+		cout << "ClapTrap " << _name << " have died, can't be repaired" << endl;
 		_hit_points = 0;
 		return;
 	}

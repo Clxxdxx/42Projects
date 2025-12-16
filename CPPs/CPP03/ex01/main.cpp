@@ -1,5 +1,5 @@
 #include "ClapTrap.hpp"
-
+#include "ScavTrap.hpp"
 int main(void)
 {
     cout << "CREATION" << endl;
@@ -37,6 +37,12 @@ int main(void)
     cout << "\nREPAIR" << endl;
     b.beRepaired(3);
     b.beRepaired(3);
+
+    cout << "\nSCAVTRAP TEST" << endl;
+
+    ScavTrap d("ScavTrap");
+    d.attack("Joselito");
+    d.guardGate();
 
     cout << "\nDESTRUCTORs" << endl;
     return 0;
