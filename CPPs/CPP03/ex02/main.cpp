@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 int main(void)
 {
     cout << "CREATION" << endl;
@@ -43,6 +44,10 @@ int main(void)
     ScavTrap d("Amador");
     d.attack("Joselito");
     d.guardGate();
+
+    cout << "\nFRAGTRAP TEST" << endl;
+    FragTrap e("Maria");
+    e.highFivesGuys();
 
     cout << "\nDESTRUCTORs" << endl;
     return 0;

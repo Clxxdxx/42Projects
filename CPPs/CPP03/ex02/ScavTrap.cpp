@@ -6,6 +6,7 @@ ScavTrap::ScavTrap() : ClapTrap()
     _energy_points = 50;
     _attack_damage = 20;
     cout << "ScavTrap Default created with " << _hit_points << " hit points, " << _energy_points << " energy points and " << _attack_damage << " attack damage" << endl;
+
 }
 
 ScavTrap::ScavTrap(const string &name) : ClapTrap(name)
