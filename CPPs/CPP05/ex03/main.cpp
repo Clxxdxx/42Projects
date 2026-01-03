@@ -18,5 +18,6 @@ int main()
         boss.executeForm(*form);
         delete form;
     }
+    
     return 0;
 }

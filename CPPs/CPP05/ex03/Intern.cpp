@@ -46,7 +46,6 @@ AForm* Intern::makeForm(string formName, string target)
         if (forms[i] == formName)
         {
            cout << "Intern creates " << formName << endl;
-           (*all_forms[i])(target);
            return all_forms[i](target);
         }
         i++;
