@@ -1,5 +1,14 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 12:24:52 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 16:01:54 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Cat.hpp"
 
@@ -22,8 +31,11 @@ Cat::Cat(Cat const &copy): Animal(copy)
 
 Cat	&Cat::operator=(const Cat &copy)
 {
+	if (this == &copy)
+		return ;
 	cout << "Assignment operator for Cat called." << endl;
 	this->_type = copy._type;
+	delete brain;
 	brain = new Brain(*copy.brain);
 	return (*this);
 }

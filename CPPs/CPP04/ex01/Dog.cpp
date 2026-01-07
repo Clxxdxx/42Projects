@@ -22,6 +22,9 @@ Dog::Dog(Dog const &copy): Animal(copy)
 
 Dog	&Dog::operator=(const Dog &copy)
 {
+	if (this == &copy)
+		return ;
+	
 	cout << "Assignment operator for Dog called." << endl;
 	this->_type = copy._type;
 	brain = new Brain(*copy.brain);

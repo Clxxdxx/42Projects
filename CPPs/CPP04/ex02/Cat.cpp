@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 12:21:09 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:02:21 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/22 12:31:21 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 16:03:05 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog() : Animal("Dog")
+Cat::Cat() : Animal("Cat")
 {
-
+	this->brain = new Brain();
 }
 
-Dog::~Dog()
+Cat::~Cat()
 {
-    cout << "Dog " << _type << " have been destroyed" << endl;
+	delete brain;
+    cout << "Cat " << _type << " have been destroyed" << endl;
 }
 
-Dog::Dog(Dog const &copy): Animal(copy)
+Cat::Cat(Cat const &copy): Animal(copy)
 {
-	cout << "Dog copy constructor called" << endl;
+	cout << "Cat copy constructor called" << endl;
 	*this = copy;
 }
 
-Dog	&Dog::operator=(const Dog &copy)
+Cat	&Cat::operator=(const Cat &copy)
 {
 	if (this == &copy)
 		return ;
-	cout << "Assignment operator for Dog called." << endl;
+	cout << "Assignment operator for Cat called." << endl;
 	this->_type = copy._type;
+	brain = new Brain(*copy.brain);
 	return (*this);
 }
 
-void Dog::makeSound() const
+void Cat::makeSound() const
 {
-    cout << _type << " makes guau" << endl;
+    cout << _type << " makes miau" << endl;
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 12:22:20 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 12:24:13 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/22 12:30:48 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 12:30:51 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 #include <iostream>
 #include <string>
 typedef std::string string;
@@ -19,15 +19,20 @@ using std::cout;
 using std::endl;
 
 
-class Brain {
+class Animal {
 
 protected:
-    string ideas[100];
+    string _type;
 public:
-    Brain(void);
-	Brain(Brain const &copy);
-	~Brain(void);
-    Brain &operator=(Brain const &copy);
+    Animal(void);
+	Animal(string type);
+	Animal(Animal const &copy);
+	virtual ~Animal(void);
+    Animal &operator=(Animal const &copy);
+
+    string getType() const;
+
+    virtual void makeSound() const = 0;
 };
 
 

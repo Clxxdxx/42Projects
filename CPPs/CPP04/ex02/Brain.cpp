@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 12:21:09 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:02:21 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/22 12:31:13 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 16:03:02 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-
-Dog::Dog() : Animal("Dog")
+#include "Brain.hpp"
+Brain::Brain()
 {
 
 }
 
-Dog::~Dog()
+Brain::~Brain()
 {
-    cout << "Dog " << _type << " have been destroyed" << endl;
+    cout << "Brain have been destroyed" << endl;
 }
 
-Dog::Dog(Dog const &copy): Animal(copy)
+Brain::Brain(Brain const &copy)
 {
-	cout << "Dog copy constructor called" << endl;
+	cout << "Brain copy constructor called" << endl;
 	*this = copy;
 }
 
-Dog	&Dog::operator=(const Dog &copy)
+Brain	&Brain::operator=(const Brain &copy)
 {
-	if (this == &copy)
+    if (this == &copy)
 		return ;
-	cout << "Assignment operator for Dog called." << endl;
-	this->_type = copy._type;
+	cout << "Assignment operator for Brain called." << endl;
+	int i = 0;
+    while (i < 100)
+    {
+        this->ideas[i] = copy.ideas[i];
+        i++;
+    }
 	return (*this);
-}
-
-void Dog::makeSound() const
-{
-    cout << _type << " makes guau" << endl;
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 12:20:47 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 16:02:14 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 
 Animal::Animal()
@@ -24,6 +36,8 @@ Animal::Animal(Animal const &copy)
 
 Animal	&Animal::operator=(const Animal &copy)
 {
+	if (this == &copy)
+		return ;
 	cout << "Assignment operator for Animal called." << endl;
 	this->_type = copy._type;
 	return (*this);

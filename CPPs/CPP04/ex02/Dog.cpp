@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 12:21:09 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:02:21 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/22 12:31:35 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 16:03:08 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 Dog::Dog() : Animal("Dog")
 {
-
+	this->brain = new Brain();
 }
 
 Dog::~Dog()
 {
+	delete brain;
     cout << "Dog " << _type << " have been destroyed" << endl;
 }
 
@@ -34,6 +35,7 @@ Dog	&Dog::operator=(const Dog &copy)
 		return ;
 	cout << "Assignment operator for Dog called." << endl;
 	this->_type = copy._type;
+	brain = new Brain(*copy.brain);
 	return (*this);
 }
 

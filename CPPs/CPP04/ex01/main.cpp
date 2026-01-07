@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 12:25:18 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 15:55:24 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
@@ -32,8 +44,13 @@ int	main(void)
     }
 
     for (int i = 0; i < num; i++)
+	{
         delete animals[i];
+	}
 
+	Animal *dog = new Dog();
+	dog = animals[0];
+	
     return 0;
 	//delete[] animals;
 	

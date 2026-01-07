@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 12:21:20 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 15:50:06 by clalopez         ###   ########.fr       */
+/*   Created: 2025/12/22 12:31:46 by clalopez          #+#    #+#             */
+/*   Updated: 2025/12/22 16:04:46 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,23 @@
 
 int	main(void)
 {
-	const Animal		*meta = new Animal();
+	//const Animal		*meta = new Animal();
 	const Animal		*j = new Dog();
 	const Animal		*i = new Cat();
 	const WrongAnimal	*k = new WrongCat();
 
-	cout << "============================================" << endl;
+	cout << "========================================" << endl;
 	
-	meta->makeSound();
+	//meta->makeSound();
 	i->makeSound();
 	j->makeSound();
 	k->makeSound();
-
-	cout << "============================================" << endl;
-
-	delete meta;
+	
+	cout << "========================================" << endl;
+	
+	//delete meta;
 	delete i;
 	delete j;
 	delete k;
+	
 }
