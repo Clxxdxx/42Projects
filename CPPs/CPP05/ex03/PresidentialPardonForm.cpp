@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:16:22 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/07 15:15:45 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PresidentialPardonForm.hpp"
 #include <fstream>
 #include <cstdlib>
@@ -5,22 +17,22 @@
 
 PresidentialPardonForm::PresidentialPardonForm(): AForm("PresidentialPardonForm", 25, 5), target("Default")
 {
-    cout << "PresidentialPardonForm Default Constructor called" << endl;
+
 }
 
 PresidentialPardonForm::PresidentialPardonForm(string target): AForm("PresidentialPardonForm", 25, 5), target(target)
 {
-    cout << "PresidentialPardonForm " << target << " Constructor called" << endl;
+
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-    cout << "Destructor PresidentialPardonForm has called" << endl;
+
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy): AForm::AForm(copy), target(copy.target)
 {
-    cout << "PresidentialPardonForm copy constructor have been called";
+
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &copy)

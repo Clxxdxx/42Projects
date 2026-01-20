@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 12:22:16 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:01:48 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:36:05 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Brain::Brain(Brain const &copy)
 Brain	&Brain::operator=(const Brain &copy)
 {
     if (this == &copy)
-		return ;
+		return *this;
 	cout << "Assignment operator for Brain called." << endl;
 	int i = 0;
     while (i < 100)

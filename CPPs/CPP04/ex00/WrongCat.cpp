@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 12:21:34 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:02:32 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:35:54 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ WrongCat::WrongCat(WrongCat const &copy): WrongAnimal(copy)
 WrongCat	&WrongCat::operator=(const WrongCat &copy)
 {
 	if (this == &copy)
-		return ;
+		return *this;
 	cout << "Assignment operator for WrongCat called." << endl;
 	this->_type = copy._type;
 	return (*this);

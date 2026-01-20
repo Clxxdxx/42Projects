@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:19:48 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/14 11:12:12 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "iter.hpp"
 
 void sum38(int &i)
 {
     i += 38;
+    std::cout << i << std::endl;
 }
 void to_upper(std::string &str)
 {
@@ -15,10 +28,6 @@ void to_upper(std::string &str)
     }
 }
 
-void printInt( int &i)
-{
-    std::cout << i << std::endl;
-}
 
 void printString( std::string &str)
 {
@@ -28,13 +37,12 @@ void printString( std::string &str)
 int main()
 {
     int numbers[] = {1, 2, 3, 4};
-    iter(numbers, 4, sum38);
-    iter(numbers, 4, printInt);
+    iter(numbers, 2, sum38);
 
     std::cout << "----" << std::endl;
 
     std::string words[] = {"hola", "adios", "hello world"};
-    iter(words, 3, to_upper);
+    iter(words, 2, to_upper);
     iter(words, 3, printString);
 
     return 0;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:16:28 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/07 15:15:57 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RobotomyRequestForm.hpp"
 #include <fstream>
 #include <cstdlib>
@@ -5,22 +17,22 @@
 
 RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), target("Default")
 {
-    cout << "RobotomyRequestForm Default Constructor called" << endl;
+
 }
 
 RobotomyRequestForm::RobotomyRequestForm(string target): AForm("RobotomyRequestForm", 72, 45), target(target)
 {
-    cout << "RobotomyRequestForm " << target << " Constructor called" << endl;
+
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-    cout << "Destructor RobotomyRequestForm has called" << endl;
+
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy): AForm::AForm(copy), target(copy.target)
 {
-    cout << "RobotomyRequestForm copy constructor have been called";
+
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &copy)

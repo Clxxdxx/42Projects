@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:17:46 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/09 11:36:39 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConverter.hpp"
 #include <iostream>
 #include <iomanip>
@@ -7,8 +19,30 @@
 
 void ScalarConverter::convert(const string &literal)
 {
+    if (literal.length() == 1 && !std::isdigit(literal[0]))
+    {
+        char c = literal[0];
+
+        cout << "char: '" << c << "'" << endl;
+        cout << "int: " << static_cast<int>(c) << endl;
+        cout << "float: " << std::fixed << std::setprecision(1)
+             << static_cast<float>(c) << "f" << endl;
+        cout << "double: " << std::fixed << std::setprecision(1)
+             << static_cast<double>(c) << endl;
+
+        return;
+    }
+
     char* end;
     double value = std::strtod(literal.c_str(), &end);
+    if (*end != '\0' && !(*end == 'f' && *(end + 1) == '\0'))
+    {
+        cout << "char: impossible" << endl;
+        cout << "int: impossible" << endl;
+        cout << "float: impossible" << endl;
+        cout << "double: impossible" << endl;
+        return;
+    }
 
     if (std::isnan(value) || std::isinf(value))
         cout << "char: impossible" << endl;
@@ -27,8 +61,9 @@ void ScalarConverter::convert(const string &literal)
         cout << "int: " << static_cast<int>(value) << endl;
 
     cout << "float: " << std::fixed << std::setprecision(1)
-              << static_cast<float>(value) << "f" << endl;
+         << static_cast<float>(value) << "f" << endl;
 
     cout << "double: " << std::fixed << std::setprecision(1)
-              << value << endl;
+         << value << endl;
 }
+

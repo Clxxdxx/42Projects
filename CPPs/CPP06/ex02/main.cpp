@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:19:18 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/08 11:54:19 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
@@ -39,21 +51,24 @@ void identify(Base* p)
 void identify(Base& p)
 {
     try {
-        dynamic_cast<A&>(p);
+        A &a = dynamic_cast<A&>(p);
+        (void)a;
         cout << "Type of the object is A" << endl;
         return;
     } catch (std::exception&) {
 
     }
     try {
-        dynamic_cast<B&>(p);
+        B &b = dynamic_cast<B&>(p);
+        (void)b;
         cout << "Type of the object is B" << endl;
         return;
     } catch (std::exception&) {
 
     }
     try {
-        dynamic_cast<C&>(p);
+        C &c = dynamic_cast<C&>(p);
+        (void)c;
         cout << "Type of the object is C" << endl;
         return;
     } catch (std::exception&) {

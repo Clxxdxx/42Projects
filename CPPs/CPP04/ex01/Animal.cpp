@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 12:22:05 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:01:41 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:36:01 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Animal::Animal()
 {
-
+	cout << "Animal default have been created" << endl;
 }
 
 Animal::Animal(string type)
@@ -37,7 +37,7 @@ Animal::Animal(Animal const &copy)
 Animal	&Animal::operator=(const Animal &copy)
 {
 	if (this == &copy)
-		return ;
+		return *this;
 	cout << "Assignment operator for Animal called." << endl;
 	this->_type = copy._type;
 	return (*this);

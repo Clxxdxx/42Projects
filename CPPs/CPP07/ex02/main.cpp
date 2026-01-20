@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:20:01 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/14 12:12:13 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Array.hpp"
 #include "Array.tpp"
 #include <iostream>
@@ -8,27 +20,22 @@ using std::endl;
 int main()
 {
     Array<int> a;
-    cout << "Size a: " << a.size() << endl;
+    cout << "Size a: " << a.size() << "\n" << endl;
 
     Array<int> b(3);
     unsigned int i = 0;
+    cout << "b: ";
     while (i < b.size())
     {
         b[i] = i * 10;
-        i++;
-    }
-
-    cout << "b: ";
-    i = 0;
-    while (i < b.size())
-    {
         cout << b[i] << " ";
         i++;
     }
-
+    cout << "\nSize b: " << b.size() << endl;
+    
     cout << endl;
 
-    Array<int> c(b);
+    Array<int> c(1);
     c[0] = 42;
 
     cout << "b[0]: " << b[0] << endl;
@@ -42,7 +49,7 @@ int main()
     cout << "d[1]: " << d[1] << endl;
 
     try {
-        cout << b[10] << endl;
+        cout << b[0] << endl;
     } catch (std::exception &e) {
         cout << "Exception: " << e.what() << endl;
     }

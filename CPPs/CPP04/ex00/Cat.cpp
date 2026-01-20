@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 12:20:56 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:02:18 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:35:40 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Cat::Cat(Cat const &copy): Animal(copy)
 Cat	&Cat::operator=(const Cat &copy)
 {
 	if (this == &copy)
-		return ;
+		return *this;
 	cout << "Assignment operator for Cat called." << endl;
 	this->_type = copy._type;
 	return (*this);

@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:19:45 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/09 14:19:46 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/12 11:54:51 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ using std::endl;
 class Fixed {
 
 private:
-    int _value;
+    int _raw;
     static const int _bits;
 
 public:
@@ -34,8 +34,8 @@ public:
     int getRawBits( void ) const;
     void setRawBits( int const raw );
 
-    Fixed(const int value);
-    Fixed(const float value);
+    Fixed(const int raw);
+    Fixed(const float raw);
     float toFloat(void) const;
     int toInt(void) const;
 };

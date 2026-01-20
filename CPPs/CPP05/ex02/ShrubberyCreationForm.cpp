@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:15:33 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/07 15:00:41 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137), target("Default")
 {
-    cout << "ShrubberyCreationForm Default Constructor called" << endl;
+	
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(string target): AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
-    cout << "ShrubberyCreationForm " << target << " Constructor called" << endl;
+
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    cout << "Destructor ShrubberyCreationForm has called" << endl;
+
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy): AForm::AForm(copy), target(copy.target)
 {
-    cout << "ShrubberyCreationForm copy constructor have been called";
+
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &copy)

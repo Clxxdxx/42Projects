@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:14:54 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/08 11:03:03 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AForm.hpp"
 
 AForm::AForm(): name("Default"), isSigned(false), gSign(1), gExecute(2)
@@ -55,12 +67,12 @@ const int &AForm::getSignGrade() const
 
 char const *AForm::GradeTooHighException::what() const throw()
 {
-    return "Grade is too high";
+    return "Form grade is too high";
 }
 
 char const *AForm::GradeTooLowException::what() const throw()
 {
-    return "Grade is too low";
+    return "Form grade is too low";
 }
 
 char const *AForm::FormNotSignedExcepion::what() const throw()
@@ -77,10 +89,9 @@ std::ostream &operator<<(std::ostream &o, const AForm &AForm)
 void AForm::beSigned(Bureaucrat &b)
 {
     if (b.getGrade() > this->gSign)
-		throw (AForm::GradeTooLowException());
+		throw (AForm::GradeTooHighException());
 	else
 	{
 		this->isSigned = true;
-		std::cout << b.getName() << " successfully signed " << this->name << std::endl;
 	}
 }

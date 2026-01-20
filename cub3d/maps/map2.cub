@@ -1,0 +1,10 @@
+F 139,69,198
+SO ./imgs/ladrillo_blanco.png
+WE ./imgs/ladrillo_blanco.png
+EA ./imgs/ladrillo_blanco.png
+NO ./imgs/ladrillo_blanco.png
+
+C 135,206,235
+1111
+10E1
+1111

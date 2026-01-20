@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 12:21:28 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:02:28 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:35:50 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 WrongAnimal::WrongAnimal()
 {
-
+	cout << "Wrong animal default have been created" << endl;
 }
 
 WrongAnimal::WrongAnimal(string type)
@@ -37,7 +37,7 @@ WrongAnimal::WrongAnimal(WrongAnimal const &copy)
 WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &copy)
 {
 	if (this == &copy)
-		return ;
+		return *this;
 	cout << "Assignment operator for WrongAnimal called." << endl;
 	this->_type = copy._type;
 	return (*this);

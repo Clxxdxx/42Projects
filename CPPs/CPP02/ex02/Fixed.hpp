@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:19:45 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/10 11:15:32 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/19 11:17:22 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ using std::endl;
 class Fixed {
 
 private:
-    int _value;
+    int _raw;
     static const int _bits;
 
 public:
@@ -36,8 +36,8 @@ public:
     void setRawBits( int const raw );
 
     //Ex01
-    Fixed(const int value);
-    Fixed(const float value);
+    Fixed(const int raw);
+    Fixed(const float raw);
     float toFloat(void) const;
     int toInt(void) const;
 
@@ -58,9 +58,9 @@ public:
 
     //Increments and decrements
     Fixed &operator++(void);
-    Fixed operator++(int value);
+    Fixed operator++(int);
     Fixed &operator--(void);
-    Fixed operator--(int value);
+    Fixed operator--(int);
     
     //Overloaded functions
     static Fixed& min(Fixed &a, Fixed &b);

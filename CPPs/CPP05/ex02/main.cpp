@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:15:16 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/08 11:04:11 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -10,20 +22,22 @@ int main() {
     std::srand(std::time(0));
 
     Bureaucrat Amancio("Amancio", 1);
-    Bureaucrat Maria("Maria", 150);
+    Bureaucrat Maria("Maria", 146);
 
     ShrubberyCreationForm f1("jardin");
     RobotomyRequestForm    f2("robot");
-    PresidentialPardonForm f3("criminal");
+    PresidentialPardonForm f3("Florentino Perez");
 
-    std::cout << "--- Failure Tests ---" << std::endl;
+    cout << "------------------------------" << endl;
     Maria.signForm(f1);
     Amancio.executeForm(f1);
 
-    std::cout << "\n--- Success Tests ---" << std::endl;
+    cout << "\n------------------------------" << endl;
     Amancio.signForm(f1);
     Amancio.signForm(f2);
     Amancio.signForm(f3);
+
+    cout << "\n------------------------------" << endl;
 
     Amancio.executeForm(f1);
     Amancio.executeForm(f2);

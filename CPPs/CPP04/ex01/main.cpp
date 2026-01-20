@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 12:25:18 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 15:55:24 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:55:18 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,37 @@
 
 int	main(void)
 {
-	/*const Animal		*meta = new Animal();
-	const Animal		*j = new Dog();
-	const Animal		*i = new Cat();
-	const WrongAnimal	*k = new WrongCat();
-
-	i->makeSound();
-	j->makeSound();
-	k->makeSound();
-	meta->makeSound();
-	delete meta;
-	delete i;
-	delete j;
-	delete k;*/
-	
 	const int num = 6;
     Animal* animals[num];
 
     for (int i = 0; i < num; i++)
     {
+		cout << "[" << i << "]";
         if (i % 2 == 0)
             animals[i] = new Dog();
         else
             animals[i] = new Cat();
+		cout << endl;
     }
+
+	cout << "========================================================" << endl;
 
     for (int i = 0; i < num; i++)
 	{
+		cout << "[" << i << "]";
         delete animals[i];
+		cout << endl;
 	}
+	
+	cout << "========================================================" << endl;
 
-	Animal *dog = new Dog();
-	dog = animals[0];
-	
+	Dog* a = new Dog();
+    Dog* b = new Dog();
+
+    *a = *b;
+
+    delete a;
+    delete b;
+
     return 0;
-	//delete[] animals;
-	
 }

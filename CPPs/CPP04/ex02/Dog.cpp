@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 12:31:35 by clalopez          #+#    #+#             */
-/*   Updated: 2025/12/22 16:03:08 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:36:50 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Dog::Dog(Dog const &copy): Animal(copy)
 Dog	&Dog::operator=(const Dog &copy)
 {
 	if (this == &copy)
-		return ;
+		return *this;
 	cout << "Assignment operator for Dog called." << endl;
 	this->_type = copy._type;
 	brain = new Brain(*copy.brain);

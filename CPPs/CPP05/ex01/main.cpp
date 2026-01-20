@@ -1,54 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 14:14:41 by clalopez          #+#    #+#             */
+/*   Updated: 2026/01/08 11:00:44 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 int main(void)
 {
-	/* Create a form with grade too high */
 	{
 		try
 		{
 			Form form0("Form 0", 1, 5);
-			std::cout << form0 << std::endl;
+			cout << form0 << endl;
 		}
 		catch(std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << e.what() << endl;
 		}
 		
 	}
 
-	std::cout << "\n --------------------- \n\n";
+	cout << "\n --------------------- \n\n";
 
 	{
 		try
 		{
-			Bureaucrat mike("Miguel", 15);
-			Form form("Form 1", 20, 45);
-			std::cout << mike << std::endl;
-			std::cout << form << std::endl;
+			Bureaucrat mike("Miguel", 2);
+			Form form("Form 1", 11, 45);
+			cout << mike << endl;
+			cout << form << endl;
 			mike.signForm(form);
-			std::cout << form << std::endl;
+			cout << form << endl;
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			cout << e.what() << endl;
 		}
 	}
 	
-	std::cout << "\n --------------------- \n\n";
+	cout << "\n --------------------- \n\n";
 
 	{
 		try
 		{
 			Bureaucrat jon("Juan", 35);
 			Form form2("Form 2", 20, 45);
-			std::cout << jon << std::endl;
-			std::cout << form2 << std::endl;
+			cout << jon << endl;
+			cout << form2 << endl;
 			jon.signForm(form2);
-			std::cout << form2 << std::endl;
+			cout << form2 << endl;
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			cout << e.what() << endl;
 		}
 	}
 	return (0);
