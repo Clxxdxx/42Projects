@@ -6,99 +6,104 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:06 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/22 11:52:02 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:32:32 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void quicksort(int *arr, int low, int high)
+void	swap_arr(int *a, int *b)
 {
-    int pivot, i, j, temp;
+	int	temp;
 
-    if (low < high)
-    {
-        pivot = arr[high];
-        i = low - 1;
-
-        for (j = low; j < high; j++)
-        {
-            if (arr[j] <= pivot)
-            {
-                i++;
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-        temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
-        quicksort(arr, low, i);
-        quicksort(arr, i + 2, high);
-    }
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
-int *get_pivots(t_list *stack, int parts)
+void	quicksort(int *arr, int low, int high)
 {
-    int size = ft_lstsize(stack);
-    int *arr = malloc(sizeof(int) * size);
-    int *pivots = malloc(sizeof(int) * parts);
-    int i = 0;
+	int	pivot;
+	int	i;
+	int	j;
 
-    t_list *tmp = stack;
-    while (tmp)
-    {
-        arr[i++] = *(int *)tmp->content;
-        tmp = tmp->next;
-    }
-
-    quicksort(arr, 0, size - 1);
-
-    for (i = 0; i < parts; i++)
-        pivots[i] = arr[(size / parts) * i];
-
-    free(arr);
-    return pivots;
+	if (low < high)
+	{
+		pivot = arr[high];
+		i = low - 1;
+		j = low;
+		while (j < high)
+		{
+			if (arr[j] <= pivot)
+			{
+				i++;
+				swap_arr(&arr[i], &arr[j]);
+			}
+			j++;
+		}
+		swap_arr(&arr[i + 1], &arr[high]);
+		quicksort(arr, low, i);
+		quicksort(arr, i + 2, high);
+	}
 }
 
-
-int get_percentil(t_list *stack)
+void	aux_sorted(t_list **stack, int size, int i, int *index_array)
 {
-    int size = ft_lstsize(stack);
-    if (size == 0)
-        return 0;
+	t_list	*current;
 
-    int *arr = malloc(size * sizeof(int));
-    if (!arr)
-        return 0;
-    t_list *temp = stack;
-    int i = 0;
-    while (temp)
-    {
-        arr[i] = *(int *)temp->content;
-        temp = temp->next;
-        i++;
-    }
-    int swapped = 1;
-    while (swapped)
-    {
-        swapped = 0;
-        int j = 0;
-        while (j < size - 1)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                int tmp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = tmp;
-                swapped = 1;
-            }
-            j++;
-        }
-    }
-    int percentil = arr[size / 2];
-    free(arr);
-    return percentil;
+	current = *stack;
+	while (current)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (*(int *)current->content == index_array[i])
+			{
+				free(current->content);
+				current->content = malloc(sizeof(int));
+				*(int *)current->content = i;
+				break ;
+			}
+			i++;
+		}
+		current = current->next;
+	}
 }
 
+void	assign_sorted_index(t_list **stack, int size)
+{
+	t_list	*current;
+	int		*index_array;
+	int		i;
+
+	index_array = (int *)malloc(sizeof(int) * size);
+	if (!index_array)
+		return ;
+	current = *stack;
+	i = 0;
+	while (current)
+	{
+		index_array[i++] = *(int *)current->content;
+		current = current->next;
+	}
+	quicksort(index_array, 0, size - 1);
+	aux_sorted(stack, size, i, index_array);
+	free(index_array);
+}
+
+int	ft_sqrt(int number)
+{
+	int	i;
+
+	if (number < 4)
+		return (1);
+	i = 2;
+	while (i * i < number)
+		i++;
+	if (i * i > number)
+	{
+		if ((i * i - number) < ((i - 1) * (i - 1) + (-number)))
+			return (i);
+	}
+	return (i - 1);
+}

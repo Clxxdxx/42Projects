@@ -6,101 +6,85 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:06 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/22 11:54:49 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:39:49 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void ksort(t_list **stack_a, t_list **stack_b)
+void	k_sort1(t_list **stack_a, t_list **stack_b, int length)
 {
-    int pivot;
+	int	i;
+	int	range;
 
-    if (ft_lstsize(*stack_a) <= 1)
-        return;
-
-    pivot = *get_pivots(*stack_a, 8);
-
-    partition(stack_a, stack_b, &pivot, 8); 
-
-
-    if (*stack_a)
-        push_a_to_b(stack_a, stack_b);
-    while (*stack_b)
-    {
-        order_mayor_minor_stackb(stack_b, stack_a);
-    }
-    while (*stack_b) 
-    {
-        pa(stack_b, stack_a);
-    }
+	i = 0;
+	range = ft_sqrt(length) * 14 / 10;
+	while (*stack_a)
+	{
+		if (*(int *)(*stack_a)->content <= i)
+		{
+			pb(stack_a, stack_b);
+			rb(stack_b);
+			i++;
+		}
+		else if (*(int *)(*stack_a)->content <= i + range)
+		{
+			pb(stack_a, stack_b);
+			i++;
+		}
+		else
+			ra(stack_a);
+	}
 }
 
-/* void radix_sort_push_swap(t_list **stack_a, t_list **stack_b)
+void	k_sort2(t_list **stack_a, t_list **stack_b, int length)
 {
-    int max_bits = get_max_bits(*stack_a);
-    int size = ft_lstsize(*stack_a);
-    int i = 0, j;
+	int	rb_count;
+	int	rrb_count;
+	int	stack_b_size;
 
-    while (i < max_bits)
-    {
-        j = 0;
-        while (j < size)
-        {
-            if ((*(int *)(*stack_a)->content >> i) & 1)
-                ra(stack_a);
-            else
-                pb(stack_a, stack_b);
-            j++;
-        }
-        while (*stack_b)
-            pa(stack_b, stack_a);
-        i++;
-    }
+	while (length - 1 >= 0)
+	{
+		stack_b_size = ft_lstsize(*stack_b);
+		rb_count = count_r(*stack_b, length - 1);
+		rrb_count = stack_b_size - rb_count;
+		if (rb_count <= rrb_count)
+		{
+			while (*(int *)(*stack_b)->content != length - 1)
+				rb(stack_b);
+			pa(stack_b, stack_a);
+			length--;
+		}
+		else
+		{
+			while (*(int *)(*stack_b)->content != length - 1)
+				rrb(stack_b);
+			pa(stack_b, stack_a);
+			length--;
+		}
+	}
 }
 
-int get_max_bits(t_list *stack)
+void	ksort(t_list **stack_a, t_list **stack_b)
 {
-    int max_value = 0;
-    int max_bits = 0;
-    t_list *tmp = stack;
+	int		size;
+	int		*original_values;
+	t_list	*current;
+	int		i;
 
-    // Encontrar el valor máximo en la lista
-    while (tmp)
-    {
-        if (*(int *)tmp->content > max_value)
-            max_value = *(int *)tmp->content;
-        tmp = tmp->next;
-    }
-
-    // Contar cuántos bits son necesarios para representar max_value
-    while ((max_value >> max_bits) != 0)
-        max_bits++;
-
-    return max_bits;
-} */
-
-
-/*void sort_stack_a(t_list **stack_a, t_list **stack_b)
-{
-    int percentil;
-
-    if (!stack_a || !*stack_a)
-        return;
-
-    percentil = get_percentil(*stack_a);
-
-    while (*stack_a)
-    {
-        if (*(int *)(*stack_a)->content <= percentil)
-        {
-            pb(stack_a, stack_b);
-        }
-        else
-        {
-            ra(stack_a);
-        }
-    }
-
-    order_mayor_minor_stackb(stack_b, stack_a);
-}*/
+	size = ft_lstsize(*stack_a);
+	original_values = (int *)malloc(sizeof(int) * size);
+	if (!original_values)
+		return ;
+	current = *stack_a;
+	i = 0;
+	while (current)
+	{
+		original_values[i++] = *(int *)current->content;
+		current = current->next;
+	}
+	assign_sorted_index(stack_a, size);
+	k_sort1(stack_a, stack_b, size);
+	k_sort2(stack_a, stack_b, size);
+	free(original_values);
+}

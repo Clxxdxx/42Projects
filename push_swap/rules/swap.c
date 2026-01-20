@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:09:06 by clalopez          #+#    #+#             */
-/*   Updated: 2025/02/27 16:44:30 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/28 11:17:32 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sa(t_list **stack_a)
 	second->next = first;
 	first->prev = second;
 	*stack_a = second;
-	ft_printf("sa\n");
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_list **stack_b)
@@ -47,11 +47,12 @@ void	sb(t_list **stack_b)
 	second->next = first;
 	first->prev = second;
 	*stack_b = second;
-	ft_printf("sb\n");
+	write(1, "sb\n", 3);
 }
-void ss(t_list **stack_a, t_list **stack_b)
+
+void	ss(t_list **stack_a, t_list **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
-	ft_printf("ss\n");
+	write(1, "ss\n", 3);
 }

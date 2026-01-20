@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 10:39:40 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/04 15:30:49 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:25:38 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	error_non_integer(int argc, char **argv)
 	{
 		if (!is_valid_integer(args[i]))
 		{
-			ft_putstr_fd("Error\n", 2);
 			if (argc == 2)
 				free_args(args);
 			return (0);

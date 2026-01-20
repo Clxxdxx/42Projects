@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:06 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/04 15:30:53 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:58:52 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	*convert_args_to_int(char **args, int count)
 
 	values = malloc(sizeof(int) * count);
 	if (!values)
-		return(0);
+		return (0);
 	i = 0;
 	while (i < count)
 	{

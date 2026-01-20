@@ -6,21 +6,11 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:50:20 by clalopez          #+#    #+#             */
-/*   Updated: 2025/02/28 11:28:20 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:49:53 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	free_args(char **args)
-{
-	int	i;
-
-	i = 0;
-	while (args[i])
-		free(args[i++]);
-	free(args);
-}
 
 t_list	*init_stack_a(int argc, char **argv)
 {

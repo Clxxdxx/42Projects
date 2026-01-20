@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:36:03 by clalopez          #+#    #+#             */
-/*   Updated: 2025/02/27 11:18:19 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/28 11:30:33 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "ft_printf/ft_printf.h"
-# include "get_next_line/get_next_line.h"
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);

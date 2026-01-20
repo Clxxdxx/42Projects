@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 12:31:01 by clalopez          #+#    #+#             */
-/*   Updated: 2025/03/04 15:30:43 by clalopez         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:58:32 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	error_out_of_range(int argc, char **argv)
 	{
 		if (!is_valid_number(args[i]))
 		{
-			ft_putstr_fd("Error\n", 2);
 			if (argc == 2)
 				free_args(args);
 			return (0);
