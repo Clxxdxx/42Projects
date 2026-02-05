@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 13:06:23 by clalopez          #+#    #+#             */
-/*   Updated: 2026/01/28 14:10:44 by clalopez         ###   ########.fr       */
+/*   Updated: 2026/02/03 11:34:07 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void RPN::calculate(string line)
 
     if (data.size() != 1)
         throw InvalidLineException();
-    cout << "Resultado: " << data.top() << endl;
+    cout << data.top() << endl;
     
 }
 
