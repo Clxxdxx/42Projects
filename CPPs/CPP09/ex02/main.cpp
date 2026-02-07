@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: claudio <claudio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:45:10 by clalopez          #+#    #+#             */
-/*   Updated: 2026/02/07 12:59:07 by clalopez         ###   ########.fr       */
+/*   Updated: 2026/02/07 18:11:29 by claudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,13 @@ int main(int argc, char **argv)
         vec.push_back(arr[i]);
         deq.push_back(arr[i]);
     }
+    if (deq.size() == 1)
+    {
+        cout << deq.front() << endl;
+        return 1;
+    }
     
-    //printCont(vec);
-    //printCont(deq);
-    //cout << vec.size() << endl;
+    
 
     pm.stepOne(deq);
     pm.stepTwo(deq);

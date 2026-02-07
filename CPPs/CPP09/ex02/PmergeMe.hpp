@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 12:19:02 by clalopez          #+#    #+#             */
-/*   Updated: 2026/02/07 12:58:24 by clalopez         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
@@ -31,6 +20,9 @@ class PmergeMe
         PmergeMe(const PmergeMe& pm);
         PmergeMe& operator=(const PmergeMe& pm);
         ~PmergeMe();
+
+        template <typename Container>
+        typename Container::iterator binaryInsert( Container &c, typename Container::iterator end, int value);
         
         template <typename Container>
         void stepOne(Container &container);
@@ -81,131 +73,110 @@ void printCont(Container &container)
 }
 
 template <typename Container>
+typename Container::iterator 
+PmergeMe::binaryInsert(
+    Container &c,
+    typename Container::iterator end,
+    int value)
+{
+    typename Container::iterator left = c.begin();
+    typename Container::iterator right = end;
+
+    while (left < right)
+    {
+        typename Container::iterator mid = left + (right - left) / 2;
+        if (*mid < value)
+            left = mid + 1;
+        else
+            right = mid;
+    }
+    return c.insert(left, value);
+}
+
+
+template <typename Container>
 void PmergeMe::stepOne(Container &container)
 {
-    int total_pairs = 0;
-    int r_lvl = 1;
-    int size_pairs = 2;
-
-
-    while (1)
+    // ordenar cada par (min, max)
+    for (size_t i = 0; i + 1 < container.size(); i += 2)
     {
-        total_pairs = container.size() / size_pairs;
-        //cout << "Total de parejas: " << total_pairs << endl;
-        if (total_pairs <= 1)
-            break;
-        typename Container::iterator it_block_start = container.begin();
-        while (std::distance(it_block_start, container.end()) >= size_pairs)
+        if (container[i] > container[i + 1])
+            std::swap(container[i], container[i + 1]);
+    }
+
+    // ordenar los pares según su máximo
+    for (size_t i = 1; i < container.size(); i += 2)
+    {
+        size_t j = i;
+        while (j > 1 && container[j] < container[j - 2])
         {
-            typename Container::iterator it_mid = it_block_start;
-            std::advance(it_mid, size_pairs / 2);
-
-            typename Container::iterator it_block_end = it_block_start;
-            std::advance(it_block_end, size_pairs);
-
-            int max_left = *it_block_start;
-            typename Container::iterator it = it_block_start;
-            while (it != it_mid)
-            {
-                if (*it > max_left)
-                    max_left = *it;
-                ++it;
-            }
-            
-            int max_right = *it_mid;
-            it = it_mid;
-            
-            while (it != it_block_end)
-            {
-                if (*it > max_right)
-                    max_right = *it;
-                ++it;
-            }
-            
-
-            if (max_left > max_right)
-            {
-                typename Container::iterator it_l = it_block_start;
-                typename Container::iterator it_r = it_mid;
-                int i = 0;
-                while (i < size_pairs / 2)
-                {
-                    std::swap(*it_l, *it_r);
-                    ++i;
-                    ++it_l;
-                    ++it_r;
-                }
-                
-            }
-
-            std::advance(it_block_start, size_pairs);
+            std::swap(container[j], container[j - 2]);
+            std::swap(container[j - 1], container[j - 3]);
+            j -= 2;
         }
-        
-        
-        
-       
-       //cout << "Tamaño de las parejas: " << size_pairs << endl;
-       r_lvl++;
-       size_pairs = my_pow(2, r_lvl);
-       //cout << "========" << endl;     
     }
 }
+
 template <typename Container>
 void PmergeMe::stepTwo(Container &container)
 {
-    //cout << "====================================" << endl;
-    int total_pairs = 0;
-    int r_lvl = 1;
-    int size_pairs = 2;
-
-    while (1)
-    {
-        total_pairs = container.size() / size_pairs;
-        if (total_pairs <= 1)
-            break;       
-        r_lvl++;
-        size_pairs = my_pow(2, r_lvl);
-    }
-
-    
-    
     Container main;
     Container pend;
-    Container nonPart;
-    int j = 0;
-    int k = size_pairs * 2;
-    cout << "Recursion level: " << r_lvl << endl;
-    for (size_t i = 0; i < container.size(); i++)
+    bool has_straggler = false;
+    int straggler = 0;
+
+    // 1. Separar en pares: main = máximos, pend = mínimos
+    for (size_t i = 0; i + 1 < container.size(); i += 2)
     {
-        if ((int)i >= size_pairs * total_pairs)
-        {
-            nonPart.push_back(container[i]);
-            j++;
-        }
-        else if (k > 0)
-        {
-            main.push_back(container[i]);
-            k--;
-        }
-        else if (k < 4)
+        if (container[i] < container[i + 1])
         {
             pend.push_back(container[i]);
-            k++;
-        }     
+            main.push_back(container[i + 1]);
+        }
+        else
+        {
+            pend.push_back(container[i + 1]);
+            main.push_back(container[i]);
+        }
     }
-    
 
-    if (pend.empty())
-        main.insert(main.end(), nonPart.begin(), nonPart.end());
-    
-    cout << "Non part: " << endl; 
-    printCont(nonPart);
+    // 2. Guardar straggler si existe
+    if (container.size() % 2)
+    {
+        has_straggler = true;
+        straggler = container.back();
+    }
 
-    cout << "Pend: " << endl; 
-    printCont(pend);
+    // 3. Insertar el primer pend al principio
+    main.insert(main.begin(), pend[0]);
 
-    cout << "Main: " << endl; 
-    printCont(main);
+    // 4. Inserciones siguiendo Jacobsthal
+    size_t inserted = 1;
+    size_t j = 2;
+
+    while (true)
+    {
+        size_t jac = jacobsthal(j);
+        if (jac >= pend.size())
+            break;
+
+        for (size_t i = jac; i > inserted; --i)
+        {
+            binaryInsert(main, main.begin() + i, pend[i]);
+        }
+        inserted = jac;
+        ++j;
+    }
+
+    // 5. Insertar los pendientes restantes
+    for (size_t i = inserted + 1; i < pend.size(); ++i)
+        binaryInsert(main, main.begin() + i, pend[i]);
+
+    // 6. Insertar straggler al final correcto
+    if (has_straggler)
+        binaryInsert(main, main.end(), straggler);
+
+    container = main;
 }
 
 #endif
