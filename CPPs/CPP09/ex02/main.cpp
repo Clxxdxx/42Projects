@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:45:10 by clalopez          #+#    #+#             */
-/*   Updated: 2026/02/05 16:49:50 by clalopez         ###   ########.fr       */
+/*   Updated: 2026/02/07 12:59:07 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ int main(int argc, char **argv)
         deq.push_back(arr[i]);
     }
     
-    printCont(vec);
-    printCont(deq);
-    cout << vec.size() << endl;
+    //printCont(vec);
+    //printCont(deq);
+    //cout << vec.size() << endl;
 
     pm.stepOne(deq);
+    pm.stepTwo(deq);
     printCont(deq);
     
     delete[] arr;
