@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:45:06 by clalopez          #+#    #+#             */
-/*   Updated: 2026/02/07 12:24:13 by clalopez         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:47:08 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,19 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
     (void)other;
     return *this;
+}
+
+char const *PmergeMe::NoNumValueException::what() const throw()
+{
+    return "Error: Non numeric input ";
+}
+
+char const *PmergeMe::NumNegativeException::what() const throw()
+{
+    return "Error: Negative number";
+}
+
+char const *PmergeMe::NumTooLargeException::what() const throw()
+{
+    return "Error: Number too large";
 }

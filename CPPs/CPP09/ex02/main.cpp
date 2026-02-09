@@ -3,46 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudio <claudio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:45:10 by clalopez          #+#    #+#             */
-/*   Updated: 2026/02/07 18:11:29 by claudio          ###   ########.fr       */
+/*   Updated: 2026/02/09 15:52:21 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <cstdlib>
 #include <climits>
-
+#include <ctime>
 bool parseInput(char **arg, int *arr, int size)
 {
     int i = 1;
     long num;
 
-    while (i <= size)
+    
+    try
     {
-        char *end;
-        num = std::strtol(arg[i], &end, 10);
-
-        if (*end != '\0')
+        while (i <= size)
         {
-            cout << "Error: argumento no numerico" << endl;
-            return false;
+            char *end;
+            num = std::strtol(arg[i], &end, 10);
+    
+            if (*end != '\0')
+                throw PmergeMe::NoNumValueException();
+            if (num > INT_MAX)
+                throw PmergeMe::NumTooLargeException();
+            if (num < 0)
+                throw PmergeMe::NumNegativeException();
+            arr[i - 1] = num;
+            i++;
         }
-        if (num > INT_MAX)
-        {
-            cout << "Error: numero muy grande" << endl;
-            return false;
-        }
-        if (num < 0)
-        {
-            cout << "Error: numero negativo" << endl;
-            return false;
-        }
-
-        arr[i - 1] = num;
-        i++;
     }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        return false;
+    }
+    
     return true;
 }
 
@@ -67,18 +67,27 @@ int main(int argc, char **argv)
         vec.push_back(arr[i]);
         deq.push_back(arr[i]);
     }
-    if (deq.size() == 1)
-    {
-        cout << deq.front() << endl;
-        return 1;
-    }
     
-    
-
-    pm.stepOne(deq);
-    pm.stepTwo(deq);
+    cout << "Before: ";
     printCont(deq);
     
+    //Algoritm with deque
+    cout << "After: ";
+    clock_t ini_deq = clock();
+    pm.sort(deq);
+    clock_t end_deq = clock();
+    printCont(deq);
+    
+    float time_deq = (float(end_deq - ini_deq) / CLOCKS_PER_SEC) * 10;
+    cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << time_deq << " us" << endl;
+    
+    //Algoritm with vector
+    clock_t ini_vec = clock();
+    pm.sort(vec);
+    clock_t end_vec = clock();
+    float time_vec = (float(end_vec - ini_vec) / CLOCKS_PER_SEC) * 10;
+    cout << "Time to process a range of " << deq.size() << " elements with std::vector : " << time_vec << " us" << endl;
+
     delete[] arr;
     return 0;
 }

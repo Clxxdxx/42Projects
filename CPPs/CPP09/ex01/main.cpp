@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 13:06:20 by clalopez          #+#    #+#             */
-/*   Updated: 2026/01/28 14:22:34 by clalopez         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:59:03 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << endl;
     }
     return 0;
 }

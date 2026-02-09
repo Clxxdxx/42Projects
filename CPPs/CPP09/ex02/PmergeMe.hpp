@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/09 11:46:24 by clalopez          #+#    #+#             */
+/*   Updated: 2026/02/09 15:54:02 by clalopez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
@@ -31,17 +43,23 @@ class PmergeMe
         void stepTwo(Container &container);
         
         template <typename Container>
-        void sort(Container& container); 
+        void sort(Container& container);
+        
+        class NumNegativeException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
+        class NumTooLargeException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
+        class NoNumValueException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
 };
-
-
-inline int my_pow(int base, int exponent)
-{
-    int result = 1;
-    for (int i = 0; i < exponent; i++)
-        result *= base;
-    return result;
-}
 
 inline size_t jacobsthal(size_t n)
 {
@@ -74,10 +92,7 @@ void printCont(Container &container)
 
 template <typename Container>
 typename Container::iterator 
-PmergeMe::binaryInsert(
-    Container &c,
-    typename Container::iterator end,
-    int value)
+PmergeMe::binaryInsert(Container &c, typename Container::iterator end, int value)
 {
     typename Container::iterator left = c.begin();
     typename Container::iterator right = end;
@@ -97,14 +112,14 @@ PmergeMe::binaryInsert(
 template <typename Container>
 void PmergeMe::stepOne(Container &container)
 {
-    // ordenar cada par (min, max)
+    //ordenar cada par
     for (size_t i = 0; i + 1 < container.size(); i += 2)
     {
         if (container[i] > container[i + 1])
             std::swap(container[i], container[i + 1]);
     }
 
-    // ordenar los pares según su máximo
+    //ordenar los pares segun el maximo
     for (size_t i = 1; i < container.size(); i += 2)
     {
         size_t j = i;
@@ -125,58 +140,50 @@ void PmergeMe::stepTwo(Container &container)
     bool has_straggler = false;
     int straggler = 0;
 
-    // 1. Separar en pares: main = máximos, pend = mínimos
+    //Separar pares
     for (size_t i = 0; i + 1 < container.size(); i += 2)
     {
-        if (container[i] < container[i + 1])
-        {
-            pend.push_back(container[i]);
-            main.push_back(container[i + 1]);
-        }
-        else
-        {
-            pend.push_back(container[i + 1]);
-            main.push_back(container[i]);
-        }
+        pend.push_back(container[i]);
+        main.push_back(container[i + 1]);
     }
 
-    // 2. Guardar straggler si existe
     if (container.size() % 2)
     {
         has_straggler = true;
         straggler = container.back();
     }
 
-    // 3. Insertar el primer pend al principio
-    main.insert(main.begin(), pend[0]);
+    //Insertar primer pendiente al principio
+    if (!pend.empty())
+        main.insert(main.begin(), pend[0]);
 
-    // 4. Inserciones siguiendo Jacobsthal
-    size_t inserted = 1;
-    size_t j = 2;
+    size_t pendIndex = 1;
+    size_t jacobIndex = 3;
 
-    while (true)
+    while (pendIndex < pend.size())
     {
-        size_t jac = jacobsthal(j);
-        if (jac >= pend.size())
-            break;
-
-        for (size_t i = jac; i > inserted; --i)
-        {
-            binaryInsert(main, main.begin() + i, pend[i]);
-        }
-        inserted = jac;
-        ++j;
+        size_t jac = jacobsthal(jacobIndex);
+        size_t endRange = std::min(jac, pend.size());
+        
+        for (size_t i = endRange; i > pendIndex && i > 0; --i)
+            binaryInsert(main, main.end(), pend[i - 1]);
+        
+        pendIndex = endRange;
+        ++jacobIndex;
     }
 
-    // 5. Insertar los pendientes restantes
-    for (size_t i = inserted + 1; i < pend.size(); ++i)
-        binaryInsert(main, main.begin() + i, pend[i]);
-
-    // 6. Insertar straggler al final correcto
     if (has_straggler)
         binaryInsert(main, main.end(), straggler);
 
     container = main;
 }
+
+template <typename Container>
+void PmergeMe::sort(Container &container)
+{
+    stepOne(container);
+    stepTwo(container);
+}
+
 
 #endif
