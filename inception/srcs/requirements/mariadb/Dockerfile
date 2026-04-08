@@ -2,20 +2,20 @@ ARG DEB_VERSION="bookworm-slim"
 
 FROM debian:${DEB_VERSION}
 
-# Install MariaDB
+#install MariaDB
 RUN apt-get update && apt-get install -y \
     mariadb-server \
     && rm -rf /var/lib/apt/lists/*
 
-# Create directoris
+#create directoris
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld \
     && mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql
 
-#Copy configuration
+#copy configuration
 COPY conf/50-server.conf /etc/mysql/mariadb.conf.d/
 COPY tools/init_db.sh /usr/local/bin/
 
-# Permisions
+#permisions
 RUN chmod +x /usr/local/bin/init_db.sh
 
 EXPOSE 3306

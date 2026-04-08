@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#if something fails, stop script
 set -e
 
 cd /var/www/html
@@ -11,13 +12,13 @@ fi
 
 echo "Setting up WordPress..."
 
-# Descarga solo si no hay archivos
+#download files
 if [ ! -f "wp-includes/version.php" ]; then
     echo "Downloading WordPress..."
     wp core download --allow-root --path=/var/www/html
 fi
 
-# PRIMERO esperar a MariaDB, LUEGO crear config
+#wait MariaDB and create config
 echo "Waiting for MariaDB to be ready..."
 until mysqladmin ping -h"$WORDPRESS_DB_HOST" -u"$WORDPRESS_DB_USER" -p"$WORDPRESS_DB_PASSWORD" --silent 2>/dev/null; do
     echo "MariaDB is not ready yet... sleeping 2s"
@@ -25,7 +26,7 @@ until mysqladmin ping -h"$WORDPRESS_DB_HOST" -u"$WORDPRESS_DB_USER" -p"$WORDPRES
 done
 echo "MariaDB is ready!"
 
-# Crear config solo si no existe, y con --skip-check para no depender de la conexión
+#create config only if not exists
 if [ ! -f "wp-config.php" ]; then
     echo "Creating wp-config.php..."
     wp config create --allow-root \
@@ -38,7 +39,7 @@ if [ ! -f "wp-config.php" ]; then
         --force
 fi
 
-# Instalar solo si no está instalado
+#install wp only if not have been instaled
 if ! wp core is-installed --allow-root; then
     echo "Installing WordPress database..."
     wp core install \
