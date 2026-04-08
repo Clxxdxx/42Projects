@@ -1,0 +1,92 @@
+#define all containers with his options to automate the process of creation
+services:
+  mariadb:
+    build: 
+      context: requirements/mariadb #path where docker will look to build image
+    image: mariadb:inception
+    container_name: mariadb
+    networks:
+      - inception-network #set network
+    volumes:
+      - mariadb_data:/var/lib/mysql #set volume where data will be stored
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_root_password
+      - db_password
+    restart: always #if an error occurs, restart
+
+  wordpress:
+    build:
+      context: requirements/wordpress #path where docker will look to build image
+    image: wordpress:inception
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    networks:
+      - inception-network #set network
+    volumes:
+      - wordpress_data:/var/www/html #set volume where data will be stored
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD_FILE: /run/secrets/db_password
+      WORDPRESS_TABLE_PREFIX: wp_
+      DOMAIN_NAME: ${DOMAIN_NAME}
+      WP_ADMIN_USER: ${WP_ADMIN_USER}
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+      WP_USER: ${WP_USER}
+      WP_USER_PASSWORD: ${WP_USER_PASSWORD}
+      WP_USER_EMAIL: ${WP_USER_EMAIL}
+    secrets:
+      - db_password
+    restart: always #if an error occurs, restart
+
+  nginx:
+    build:
+      context: requirements/nginx #path where docker will look to build image
+    image: nginx:inception
+    container_name: nginx
+    depends_on:
+      - wordpress
+    networks:
+      - inception-network
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress_data:/var/www/html #set volume where data will be stored
+    environment:
+      DOMAIN_NAME: ${DOMAIN_NAME}
+    restart: always #if any error occurs, restart
+
+#define network where containers will works
+networks:
+  inception-network:
+    driver: bridge #the form that containers connects
+
+#defines volumes where data will be stored
+volumes:
+  mariadb_data:
+    driver: local #use local driver storage
+    driver_opts:
+      type: none
+      o: bind #to mount file system on locarl storage
+      device: /home/clalopez/data/mariadb
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind #to mount file system on locarl storage
+      device: /home/clalopez/data/wordpress
+
+#defines the secrets file where passwords are almacened
+secrets:
+  db_root_password:
+    file: ../secrets/db_root_password.txt
+  db_password:
+    file: ../secrets/db_password.txt

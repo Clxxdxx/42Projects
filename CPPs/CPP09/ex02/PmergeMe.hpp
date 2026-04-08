@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 11:46:24 by clalopez          #+#    #+#             */
-/*   Updated: 2026/02/09 15:54:02 by clalopez         ###   ########.fr       */
+/*   Updated: 2026/02/10 12:05:48 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class PmergeMe
         ~PmergeMe();
 
         template <typename Container>
-        typename Container::iterator binaryInsert( Container &c, typename Container::iterator end, int value);
+        typename Container::iterator
+        binaryInsert( Container &c, typename Container::iterator end, int value);
         
         template <typename Container>
         void stepOne(Container &container);
@@ -92,9 +93,9 @@ void printCont(Container &container)
 
 template <typename Container>
 typename Container::iterator 
-PmergeMe::binaryInsert(Container &c, typename Container::iterator end, int value)
+PmergeMe::binaryInsert(Container &container, typename Container::iterator end, int value)
 {
-    typename Container::iterator left = c.begin();
+    typename Container::iterator left = container.begin();
     typename Container::iterator right = end;
 
     while (left < right)
@@ -105,7 +106,7 @@ PmergeMe::binaryInsert(Container &c, typename Container::iterator end, int value
         else
             right = mid;
     }
-    return c.insert(left, value);
+    return container.insert(left, value);
 }
 
 
@@ -126,7 +127,7 @@ void PmergeMe::stepOne(Container &container)
         while (j > 1 && container[j] < container[j - 2])
         {
             std::swap(container[j], container[j - 2]);
-            std::swap(container[j - 1], container[j - 3]);
+            std::swap(container[j- 1], container[j - 3]);
             j -= 2;
         }
     }
@@ -137,8 +138,8 @@ void PmergeMe::stepTwo(Container &container)
 {
     Container main;
     Container pend;
-    bool has_straggler = false;
-    int straggler = 0;
+    bool no_participate = false;
+    int num_no_participate = 0;
 
     //Separar pares
     for (size_t i = 0; i + 1 < container.size(); i += 2)
@@ -149,10 +150,10 @@ void PmergeMe::stepTwo(Container &container)
 
     if (container.size() % 2)
     {
-        has_straggler = true;
-        straggler = container.back();
+        no_participate = true;
+        num_no_participate = container.back();
     }
-
+    
     //Insertar primer pendiente al principio
     if (!pend.empty())
         main.insert(main.begin(), pend[0]);
@@ -160,6 +161,7 @@ void PmergeMe::stepTwo(Container &container)
     size_t pendIndex = 1;
     size_t jacobIndex = 3;
 
+    //Jacobo
     while (pendIndex < pend.size())
     {
         size_t jac = jacobsthal(jacobIndex);
@@ -171,10 +173,10 @@ void PmergeMe::stepTwo(Container &container)
         pendIndex = endRange;
         ++jacobIndex;
     }
-
-    if (has_straggler)
-        binaryInsert(main, main.end(), straggler);
-
+    
+    if (no_participate)
+        binaryInsert(main, main.end(), num_no_participate);
+    
     container = main;
 }
 

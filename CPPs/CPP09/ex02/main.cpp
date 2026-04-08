@@ -6,7 +6,7 @@
 /*   By: clalopez <clalopez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:45:10 by clalopez          #+#    #+#             */
-/*   Updated: 2026/02/09 15:52:21 by clalopez         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:18:38 by clalopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int main(int argc, char **argv)
     PmergeMe pm;
 
     int size = argc - 1;
+    
     int *arr = new int[size];
-
     if (!parseInput(argv, arr, size))
         return 1;
     std::vector<int> vec;
